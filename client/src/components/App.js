@@ -3,6 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 
+//TODO: Components redirect users to the /error path when requests to 
+//the REST API return a "500 Internal Server Error" HTTP status code.
 
 //testing the the CORS worked and I can get data from the backend api
 const apiCall = () => {
