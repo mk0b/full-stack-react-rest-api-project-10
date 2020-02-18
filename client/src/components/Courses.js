@@ -2,21 +2,16 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 
-//TODO: Use NavLink in here? Maybe not.
-//TODO: Make the courses call. 
-//Iterate for every course the JSX for showing the course.
-
 class Courses extends Component {
     //setting up state
     constructor(props) {
         super(props);
-
         this.state = {
             courses: []
         }
     }
 
-    //api call
+    //all courses api call
     apiCall = () => {
         axios.get('http://localhost:5000/api/courses')
         .then(response => {
@@ -29,14 +24,18 @@ class Courses extends Component {
             console.log('Error fetching and parsing data: ', error);
         });
     };
-    //component did mount?
+    
     componentDidMount() {
         this.apiCall();
     }
 
     render() {
-        console.log('Courses', this.courses);
-        const courses = this.courses;
+        //TODO: Remove test
+        console.log('Courses', this.state.courses);
+        const courses = this.state.courses;
+        //using map to create a new array that I can include below
+        //to add all of the courses in the db
+        //FIXME: I am getting a unique key prop warning but it's not a list so I can't figure out where it wants me to put it.
         const coursesArray = courses.map(course => {
             return (
                 <div className="grid-33">
@@ -48,48 +47,28 @@ class Courses extends Component {
             );
         });
 
-
-
         return (
             <Fragment>
                 <div className="header">
                     <div className="bounds">
                     <h1 className="header--logo">Courses</h1>
                     <nav>
-                        <a className="signup" href="sign-up.html">
+                        <a className="signup" href="/signup">
                         Sign Up
                         </a>
-                        <a className="signin" href="sign-in.html">
+                        <a className="signin" href="/signin">
                         Sign In
                         </a>
                     </nav>
                     </div>
                 </div>
                 <hr />
-                {coursesArray}
                 <div className="bounds">
-                    <div className="grid-33">
-                    <a className="course--module course--link" href="course-detail.html">
-                        <h4 className="course--label">Course</h4>
-                        <h3 className="course--title">Build a Basic Bookcase</h3>
-                    </a>
-                    </div>
-                    <div className="grid-33">
-                    <a className="course--module course--link" href="course-detail.html">
-                        <h4 className="course--label">Course</h4>
-                        <h3 className="course--title">Learn How to Program</h3>
-                    </a>
-                    </div>
-                    <div className="grid-33">
-                    <a className="course--module course--link" href="course-detail.html">
-                        <h4 className="course--label">Course</h4>
-                        <h3 className="course--title">Learn How to Test Programs</h3>
-                    </a>
-                    </div>
+                    {coursesArray}
                     <div className="grid-33">
                     <a
                         className="course--module course--add--module"
-                        href="create-course.html"
+                        href="/courses/create"
                     >
                         <h3 className="course--add--title">
                         <svg
