@@ -7,9 +7,10 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 //importing components
 import Courses from './Courses';
 import CreateCourse from './CreateCourse';
+import UpdateCourse from './UpdateCourse';
 import CourseDetail from './CourseDetail';
 /* 
-import UpdateCourse from './UpdateCourse';
+
 
 import UserSignIn from './UserSignIn';
 import UserSignUp from './UserSignUp';
@@ -28,9 +29,10 @@ function App() {
         <Switch>
           <Route exact path="/" component={Courses}/>
           <Route path="/courses/create" component={CreateCourse}/>
+          <Route path="/courses/:id/update" component={UpdateCourse}/>
           <Route path="/courses/:id" component={CourseDetail}/>
 {/*           
-          <Route path="/courses/:id/update" component={UpdateCourse}/>
+          
           
           <Route path="/signin" component={UserSignIn}/>
           <Route path="/singup" component={UserSignUp}/>
