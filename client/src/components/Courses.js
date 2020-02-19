@@ -23,7 +23,7 @@ class Courses extends Component {
         .catch(error => {
             console.log('Error fetching and parsing data: ', error);
         });
-    };
+    }
     
     componentDidMount() {
         this.apiCall();
