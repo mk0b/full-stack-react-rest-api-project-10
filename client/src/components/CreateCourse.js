@@ -1,8 +1,10 @@
 //stateful class component
 import React, { Component, Fragment } from 'react';
-import axios from 'axios';
+//TODO: Do I need axios here?
 
 //TODO: Do something with the Validation erros code. 
+//TODO: Can't test this without being logged in first.
+//TODO: Fix onclick for the cancel button.
 
 class CreateCourse extends Component {
     //setting up state
@@ -24,7 +26,7 @@ class CreateCourse extends Component {
                     <h1 className="header--logo">Courses</h1>
                     <nav>
                         <span>Welcome Joe Smith!</span>
-                        <a className="signout" href="index.html">
+                        <a className="signout" href="/signout">
                         Sign Out
                         </a>
                     </nav>
@@ -43,7 +45,7 @@ class CreateCourse extends Component {
                         </ul>
                         </div>
                     </div>
-                    <form>
+                    <form action="http://localhost:5000/api/courses" method="post">
                         <div className="grid-66">
                         <div className="course--header">
                             <h4 className="course--label">Course</h4>
@@ -64,7 +66,7 @@ class CreateCourse extends Component {
                             <textarea
                                 id="description"
                                 name="description"
-                                className
+                                className="desc"
                                 placeholder="Course description..."
                                 defaultValue={""}
                             />
@@ -93,7 +95,7 @@ class CreateCourse extends Component {
                                 <textarea
                                     id="materialsNeeded"
                                     name="materialsNeeded"
-                                    className
+                                    className="materials"
                                     placeholder="List materials..."
                                     defaultValue={""}
                                 />
@@ -108,7 +110,7 @@ class CreateCourse extends Component {
                         </button>
                         <button
                             className="button button-secondary"
-                            onclick="event.preventDefault(); location.href='index.html';"
+                            onclick="event.preventDefault(); location.href='/api/courses';"
                         >
                             Cancel
                         </button>
