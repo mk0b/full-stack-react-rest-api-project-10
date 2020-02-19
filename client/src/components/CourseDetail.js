@@ -7,6 +7,7 @@ import axios from 'axios';
 
 //TODO: add the associated user info with userInfo (at least for the By) data or get it from who is authorized?
 //TODO: Fix the formatting for description and materitals needed.
+//TODO: Delete course needs to immediately send a delete to the API need to make it a mini form?
 
 class CourseDetail extends Component {
     //setting up state
@@ -38,7 +39,7 @@ class CourseDetail extends Component {
 
     render() {
         console.log(this.state.courseDetail);
-        const { title, description, estimatedTime, materialsNeeded } = this.state.courseDetail;
+        const { id, title, description, estimatedTime, materialsNeeded } = this.state.courseDetail;
         return (
             <Fragment>
                 <div className="header">
@@ -58,7 +59,7 @@ class CourseDetail extends Component {
                     <div className="bounds">
                         <div className="grid-100">
                         <span>
-                            <a className="button" href="update-course.html">
+                            <a className="button" href={`/courses/${id}/update`}>
                             Update Course
                             </a>
                             <a className="button" href="#">
