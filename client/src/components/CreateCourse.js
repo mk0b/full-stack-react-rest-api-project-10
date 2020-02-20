@@ -1,5 +1,6 @@
 //stateful class component
 import React, { Component, Fragment } from 'react';
+import Header from './Header';
 //TODO: Do I need axios here?
 
 //TODO: Do something with the Validation erros code. 
@@ -21,18 +22,7 @@ class CreateCourse extends Component {
 
         return (
             <Fragment>
-                <div className="header">
-                    <div className="bounds">
-                    <h1 className="header--logo">Courses</h1>
-                    <nav>
-                        <span>Welcome Joe Smith!</span>
-                        <a className="signout" href="/signout">
-                        Sign Out
-                        </a>
-                    </nav>
-                    </div>
-                </div>
-                <hr />
+                <Header />
                 <div className="bounds course--detail">
                     <h1>Create Course</h1>
                     <div>

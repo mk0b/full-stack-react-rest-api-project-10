@@ -6,6 +6,7 @@
 //the requested course isn't owned by the authenticated user.
 
 import React, { Component, Fragment } from 'react';
+import Header from './Header';
 import axios from 'axios';
 
 class UpdateCourse extends Component {
@@ -27,18 +28,7 @@ class UpdateCourse extends Component {
 
         return (
             <Fragment>
-                <div className="header">
-                    <div className="bounds">
-                    <h1 className="header--logo">Courses</h1>
-                    <nav>
-                        <span>Welcome Joe Smith!</span>
-                        <a className="signout" href="index.html">
-                        Sign Out
-                        </a>
-                    </nav>
-                    </div>
-                </div>
-                <hr />
+                <Header />
                 <div className="bounds course--detail">
                     <h1>Update Course</h1>
                     <div>
