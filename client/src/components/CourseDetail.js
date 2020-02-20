@@ -4,6 +4,7 @@
 
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 import Header from './Header';
 
 //TODO: add the associated user info with userInfo (at least for the By) data or get it from who is authorized?
@@ -33,6 +34,28 @@ class CourseDetail extends Component {
         });
     }
 
+    onDelete = event => {
+        //use the id and insert into the api call for the delete function.
+        console.log('Clicked: ', event.target);
+        //send back to the / page after deletion
+        if (window.confirm('Are you sure you want to delete this course? This action cannot be undone.')) {
+            console.log('Delete Confirmed')
+            const { id } = this.props.match.params;
+            axios.delete(`http://localhost:5000/api/courses/${id}`)
+            .then(response => {
+                console.log('Response: ', response);
+            })
+            .catch(error => {
+                console.log('Error deleting data: ', error);
+            });
+            //redirect back to home page
+            //this.props.history.push('/');
+        } else {
+            console.log('Delete Canceled');
+            
+        }
+    }
+
     componentDidMount() {
         const { id } = this.props.match.params; 
         this.apiCall(id);
@@ -52,7 +75,7 @@ class CourseDetail extends Component {
                             <a className="button" href={`/courses/${id}/update`}>
                             Update Course
                             </a>
-                            <a className="button" href="#">
+                            <a onClick={this.onDelete} className="button" href="#">
                             Delete Course
                             </a>
                         </span>
@@ -98,4 +121,4 @@ class CourseDetail extends Component {
     }
 }
 
-export default CourseDetail;
+export default withRouter (CourseDetail);
