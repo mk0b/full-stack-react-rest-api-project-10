@@ -22,6 +22,9 @@ class UpdateCourse extends Component {
     }
 
     render() {
+        console.log();
+        
+
         return (
             <Fragment>
                 <div className="header">
