@@ -9,12 +9,13 @@ import Courses from './Courses';
 import CreateCourse from './CreateCourse';
 import UpdateCourse from './UpdateCourse';
 import CourseDetail from './CourseDetail';
+import UserSignUp from './UserSignUp';
+import UserSignIn from './UserSignIn';
 import NotFound from './NotFound';
 import UnhandledError from './UnhandledError';
 import Forbidden from './Forbidden';
+
 /* 
-import UserSignIn from './UserSignIn';
-import UserSignUp from './UserSignUp';
 import UserSignOut from './UserSignOut';
  */
 
@@ -27,15 +28,16 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/" component={Courses} />
+          <Route path="/singup" component={UserSignUp} />
+          <Route path="/signin" component={UserSignIn} />
           <Route path="/courses/create" component={CreateCourse} />
           <Route path="/courses/:id/update" component={UpdateCourse} />
           <Route path="/courses/:id" component={CourseDetail} />
-          <Route path="/notfound" component={NotFound} />
           <Route path="/error" component={UnhandledError} />
           <Route path="/forbidden" component={Forbidden} />
+
+          <Route path="/notfound" component={NotFound} />
           {/*           
-          <Route path="/signin" component={UserSignIn}/>
-          <Route path="/singup" component={UserSignUp}/>
           <Route path="/signout" component={UserSignOut}/>
            */}
         </Switch>
