@@ -3,6 +3,8 @@ import React, { Component, Fragment } from 'react';
 import Header from './Header';
 //TODO: Do I need axios here?
 
+//The defaultValue were causing things to be weird I took them out
+
 //TODO: Do something with the Validation erros code. 
 //TODO: Can't test this without being logged in first.
 //TODO: Fix onclick for the cancel button.
@@ -46,7 +48,6 @@ class CreateCourse extends Component {
                                 type="text"
                                 className="input-title course--title--input"
                                 placeholder="Course title..."
-                                defaultValue
                             />
                             </div>
                             <p>By Joe Smith</p>
@@ -58,7 +59,6 @@ class CreateCourse extends Component {
                                 name="description"
                                 className="desc"
                                 placeholder="Course description..."
-                                defaultValue={""}
                             />
                             </div>
                         </div>
@@ -75,7 +75,6 @@ class CreateCourse extends Component {
                                     type="text"
                                     className="course--time--input"
                                     placeholder="Hours"
-                                    defaultValue
                                 />
                                 </div>
                             </li>
@@ -87,7 +86,6 @@ class CreateCourse extends Component {
                                     name="materialsNeeded"
                                     className="materials"
                                     placeholder="List materials..."
-                                    defaultValue={""}
                                 />
                                 </div>
                             </li>

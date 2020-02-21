@@ -3,6 +3,8 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import Header from './Header';
 
+//The defaultValue were causing things to be weird I took them out
+
 //TODO: Get the form working
 //TODO: Figure out why this isn't rendering
 
@@ -30,7 +32,6 @@ class UserSignUp extends Component {
                                 type="text"
                                 className
                                 placeholder="First Name"
-                                defaultValue
                             />
                             </div>
                             <div>
@@ -40,7 +41,6 @@ class UserSignUp extends Component {
                                 type="text"
                                 className
                                 placeholder="Last Name"
-                                defaultValue
                             />
                             </div>
                             <div>
@@ -50,7 +50,6 @@ class UserSignUp extends Component {
                                 type="text"
                                 className
                                 placeholder="Email Address"
-                                defaultValue
                             />
                             </div>
                             <div>
@@ -60,7 +59,6 @@ class UserSignUp extends Component {
                                 type="password"
                                 className
                                 placeholder="Password"
-                                defaultValue
                             />
                             </div>
                             <div>
@@ -70,7 +68,6 @@ class UserSignUp extends Component {
                                 type="password"
                                 className
                                 placeholder="Confirm Password"
-                                defaultValue
                             />
                             </div>
                             <div className="grid-100 pad-bottom">
@@ -79,7 +76,7 @@ class UserSignUp extends Component {
                             </button>
                             <button
                                 className="button button-secondary"
-                                onclick="event.preventDefault(); location.href='index.html';"
+                                onclick="event.preventDefault(); location.href='/';"
                             >
                                 Cancel
                             </button>
@@ -88,7 +85,7 @@ class UserSignUp extends Component {
                         </div>
                         <p>&nbsp;</p>
                         <p>
-                        Already have a user account? <a href="sign-in.html">Click here</a> to sign
+                        Already have a user account? <a href="/signin">Click here</a> to sign
                         in!
                         </p>
                     </div>

@@ -6,6 +6,8 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import Header from './Header';
 
+//The defaultValue were causing things to be weird I took them out
+
 class UserSignIn extends Component {
     //setting up state
     constructor(props) {
@@ -35,7 +37,6 @@ class UserSignIn extends Component {
                                 type="text"
                                 className
                                 placeholder="Email Address"
-                                defaultValue
                             />
                             </div>
                             <div>
@@ -45,7 +46,6 @@ class UserSignIn extends Component {
                                 type="password"
                                 className
                                 placeholder="Password"
-                                defaultValue
                             />
                             </div>
                             <div className="grid-100 pad-bottom">
