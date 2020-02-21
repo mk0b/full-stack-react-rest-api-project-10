@@ -14,10 +14,7 @@ import UserSignIn from './UserSignIn';
 import NotFound from './NotFound';
 import UnhandledError from './UnhandledError';
 import Forbidden from './Forbidden';
-
-/* 
 import UserSignOut from './UserSignOut';
- */
 
 //TODO: Components redirect users to the /error path when requests to 
 //the REST API return a "500 Internal Server Error" HTTP status code.
@@ -35,11 +32,8 @@ function App() {
           <Route path="/courses/:id" component={CourseDetail} />
           <Route path="/error" component={UnhandledError} />
           <Route path="/forbidden" component={Forbidden} />
-
+          <Route path="/signout" component={UserSignOut} />
           <Route path="/notfound" component={NotFound} />
-          {/*           
-          <Route path="/signout" component={UserSignOut}/>
-           */}
         </Switch>
       </div>
     </BrowserRouter>
