@@ -12,6 +12,54 @@ class UserSignUp extends Component {
     //setting up state
     constructor(props) {
         super(props);
+        this.state = {
+            firstName: '',
+            lastName: '',
+            emailAddress: '',
+            password: '',
+            errors: []
+        }
+    }
+
+    submit = () => {
+        const { context } = this.props;
+        //destructuring to make assigning these easier in user
+        const {
+            firstName,
+            lastName,
+            emailAddress,
+            password
+        } = this.state;
+
+        //new user payload
+        //will be passed to createUser()
+        const user = {
+            firstName,
+            lastName,
+            emailAddress,
+            password
+        };
+
+        //create new user async returns a promise
+        context.data.createUser(user)
+        .then(errors => {
+            if (errors.length) {
+                this.setState({ errors });
+            } else {
+                console.log(`${emailAddress} is succesfully signed up and authenticated!`);
+            }
+        })
+        .catch(err => {
+            //handle rejected promises
+            console.log('Something went wrong: ', err)
+            //redirect to error page
+            this.props.history.push('/error');
+        });
+    }
+
+    cancel = () => {
+        //redirecting back to the main public page /
+        this.props.history.push('/');
     }
 
 
