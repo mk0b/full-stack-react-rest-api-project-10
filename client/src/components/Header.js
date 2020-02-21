@@ -6,6 +6,10 @@ import React, { Fragment } from 'react';
 //not an authenticated user) or the user's first and last name 
 //and a button for signing out (if there's an authenticated user).
 
+//TODO: Make everything in here a NavLink make Courses clickable back to /
+//TODO: Use custom highlight and make the word color a different color when highlighted.
+//TODO: Make a wand icon to go next to courses or to use in other places in the site. Favicon?!
+
 //TODO: Add the needed if statement!!
 
 const Header = () => (
