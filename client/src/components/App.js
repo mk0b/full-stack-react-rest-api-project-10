@@ -16,6 +16,11 @@ import UnhandledError from './UnhandledError';
 import Forbidden from './Forbidden';
 import UserSignOut from './UserSignOut';
 
+//importing for userauth
+import withContext from '../Context';
+//connects user sign up with context api
+const UserSignUpWithContext = withContext(UserSignUp);
+
 //TODO: Components redirect users to the /error path when requests to 
 //the REST API return a "500 Internal Server Error" HTTP status code.
 
@@ -25,7 +30,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/" component={Courses} />
-          <Route path="/signup" component={UserSignUp} />
+          <Route path="/signup" component={UserSignUpWithContext} />
           <Route path="/signin" component={UserSignIn} />
           <Route path="/courses/create" component={CreateCourse} />
           <Route path="/courses/:id/update" component={UpdateCourse} />

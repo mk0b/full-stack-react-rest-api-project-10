@@ -1,17 +1,23 @@
 //creating what we need to use the Context API
 import React, { Component } from 'react';
+import Data from './components/UserData'
 
 const Context = React.createContext(); 
 
 export class Provider extends Component {
 
     constructor() {
-    super();
+        super();
+        this.data = new Data();
     }
 
     render() {
+        const value = {
+            data: this.data
+        };
+
         return (
-        <Context.Provider>
+        <Context.Provider value={value}>
             {this.props.children}
         </Context.Provider>  
         );

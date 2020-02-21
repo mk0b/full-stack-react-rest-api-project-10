@@ -1,5 +1,5 @@
 //helper class to help allow the React client to talk to the Express Server
-import config from './config';
+import config from '../config';
 
 export default class Data {
     api(path, method = 'GET', body = null) {
