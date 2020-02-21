@@ -17,7 +17,7 @@ import Forbidden from './Forbidden';
 import UserSignOut from './UserSignOut';
 
 //importing for userauth
-import withContext from '../Context';
+import withContext from './Context';
 //connects user sign up with context api
 const UserSignUpWithContext = withContext(UserSignUp);
 
