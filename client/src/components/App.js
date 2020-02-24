@@ -3,7 +3,6 @@ import '../css/index.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 //TODO: Add back Redirect if needed ^
 
-
 //importing components
 import Courses from './Courses';
 import CreateCourse from './CreateCourse';
@@ -20,6 +19,7 @@ import UserSignOut from './UserSignOut';
 import withContext from './Context';
 //connects user sign up with context api
 const UserSignUpWithContext = withContext(UserSignUp);
+const UserSignInWithContext = withContext(UserSignIn);
 
 //TODO: Components redirect users to the /error path when requests to 
 //the REST API return a "500 Internal Server Error" HTTP status code.
@@ -31,7 +31,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Courses} />
           <Route path="/signup" component={UserSignUpWithContext} />
-          <Route path="/signin" component={UserSignIn} />
+          <Route path="/signin" component={UserSignInWithContext} />
           <Route path="/courses/create" component={CreateCourse} />
           <Route path="/courses/:id/update" component={UpdateCourse} />
           <Route path="/courses/:id" component={CourseDetail} />

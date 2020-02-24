@@ -13,7 +13,10 @@ export class Provider extends Component {
 
     render() {
         const value = {
-            data: this.data
+            data: this.data,
+            actions: { 
+                signIn: this.signIn
+            }
         };
 
         return (
@@ -24,7 +27,8 @@ export class Provider extends Component {
     }
 
     signIn = async (emailAddress, password) => {
-        const user = await this.data.getUser();
+        const user = await this.data.getUser(emailAddress, password);
+        return user;
     }
 
     signOut = () => {
