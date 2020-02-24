@@ -2,7 +2,7 @@
 import config from '../config';
 
 export default class Data {
-    api(path, method = 'GET', body = null) {
+    api(path, method = 'GET', body = null, requiresAuth = false, credentials = null) {
     const url = config.apiBaseUrl + path;
 
     const options = {
@@ -16,11 +16,20 @@ export default class Data {
         options.body = JSON.stringify(body);
     }
 
+    //checking if auth is required
+    if (requiresAuth) {
+        //encode the credentials that were passed through
+        const encodedCredentials = btoa(`${credentials.emailAddress}:${credentials.password}`);
+        //set the auth header
+        //Example: Authorization: Basic am9lQHNtaXRoLmNvbTpqb2U=
+        options.headers['Authorization'] = `Basic ${encodedCredentials}`;
+    }
+
     return fetch(url, options);
     }
 
     async getUser() {
-    const response = await this.api(`/users`, 'GET', null);
+    const response = await this.api(`/users`, 'GET', null, true, { emailAddress, password });
     if (response.status === 200) {
         return response.json().then(data => data);
     }
