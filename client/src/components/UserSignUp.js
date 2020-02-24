@@ -24,6 +24,20 @@ class UserSignUp extends Component {
         }
     }
 
+    //on change method handling capturing input for value
+    change = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+
+        //dynamically captures form field and value
+        this.setState(() => {
+            return {
+                [name]: value
+            };
+        });
+    }
+
+    //TODO: Validate confirmed password on submit
     submit = () => {
         const { context } = this.props;
         //destructuring to make assigning these easier in user
@@ -31,19 +45,20 @@ class UserSignUp extends Component {
             firstName,
             lastName,
             emailAddress,
-            password,
-            confirmedPassword
+            password
         } = this.state;
 
         //new user payload
         //will be passed to createUser()
+        //don't need to pass confirmedPassword to the API
         const user = {
             firstName,
             lastName,
             emailAddress,
-            password,
-            confirmedPassword
+            password
         };
+
+        console.log('User Data: ', user);
 
         //create new user async returns a promise
         context.data.createUser(user)
@@ -96,7 +111,7 @@ class UserSignUp extends Component {
                                         name="firstName"
                                         type="text"
                                         value={firstName}
-                                        onchange={this.change}
+                                        onChange={this.change}
                                         placeholder="First Name" />
                                     <input 
                                         id="lastName"
@@ -117,12 +132,14 @@ class UserSignUp extends Component {
                                         name="password"
                                         type="password"
                                         value={password}
+                                        onChange={this.change}
                                         placeholder="Password" />
                                     <input 
                                         id="confirmPassword"
                                         name="confirmPassword"
                                         type="password"
                                         value={confirmedPassword}
+                                        onChange={this.change}
                                         placeholder="Confirm Password" />
                                 </Fragment>
                             )} />
