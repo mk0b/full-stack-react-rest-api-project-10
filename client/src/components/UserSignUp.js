@@ -1,7 +1,9 @@
 //stateful class component
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Header from './Header';
+import Form from './Form';
 
 //The defaultValue were causing things to be weird I took them out
 
@@ -17,6 +19,7 @@ class UserSignUp extends Component {
             lastName: '',
             emailAddress: '',
             password: '',
+            confirmedPassword: '',
             errors: []
         }
     }
@@ -28,7 +31,8 @@ class UserSignUp extends Component {
             firstName,
             lastName,
             emailAddress,
-            password
+            password,
+            confirmedPassword
         } = this.state;
 
         //new user payload
@@ -37,7 +41,8 @@ class UserSignUp extends Component {
             firstName,
             lastName,
             emailAddress,
-            password
+            password,
+            confirmedPassword
         };
 
         //create new user async returns a promise
@@ -62,78 +67,68 @@ class UserSignUp extends Component {
         this.props.history.push('/');
     }
 
-
-
     render() {
+        //setting up state here to use in the form to capture input
+        const {
+            firstName,
+            lastName,
+            emailAddress,
+            password,
+            confirmedPassword,
+            errors
+        } = this.state;
+
         return (
             <Fragment>
                 <Header />
                 <div className="bounds">
                     <div className="grid-33 centered signin">
                         <h1>Sign Up</h1>
-                        <div>
-                        <form>
-                            <div>
-                            <input
-                                id="firstName"
-                                name="firstName"
-                                type="text"
-                                className
-                                placeholder="First Name"
-                            />
-                            </div>
-                            <div>
-                            <input
-                                id="lastName"
-                                name="lastName"
-                                type="text"
-                                className
-                                placeholder="Last Name"
-                            />
-                            </div>
-                            <div>
-                            <input
-                                id="emailAddress"
-                                name="emailAddress"
-                                type="text"
-                                className
-                                placeholder="Email Address"
-                            />
-                            </div>
-                            <div>
-                            <input
-                                id="password"
-                                name="password"
-                                type="password"
-                                className
-                                placeholder="Password"
-                            />
-                            </div>
-                            <div>
-                            <input
-                                id="confirmPassword"
-                                name="confirmPassword"
-                                type="password"
-                                className
-                                placeholder="Confirm Password"
-                            />
-                            </div>
-                            <div className="grid-100 pad-bottom">
-                            <button className="button" type="submit">
-                                Sign Up
-                            </button>
-                            <button
-                                className="button button-secondary"
-                                onclick="event.preventDefault(); location.href='/';"
-                            >
-                                Cancel
-                            </button>
-                            </div>
-                        </form>
-                        </div>
+                        <Form 
+                            cancel={this.cancel}
+                            errors={errors}
+                            submit={this.submit}
+                            submitButtonText="Sign Up"
+                            elements={() => (
+                                <Fragment>
+                                    <input
+                                        id="firstName"
+                                        name="firstName"
+                                        type="text"
+                                        value={firstName}
+                                        onchange={this.change}
+                                        placeholder="First Name" />
+                                    <input 
+                                        id="lastName"
+                                        name="lastName"
+                                        type="text"
+                                        value={lastName}
+                                        onChange={this.change}
+                                        placeholder="Last Name" />
+                                    <input 
+                                        id="emailAddress"
+                                        name="emailAddress"
+                                        type="text"
+                                        value={emailAddress}
+                                        onChange={this.change}
+                                        placeholder="Email Address" />
+                                    <input 
+                                        id="password"
+                                        name="password"
+                                        type="password"
+                                        value={password}
+                                        placeholder="Password" />
+                                    <input 
+                                        id="confirmPassword"
+                                        name="confirmPassword"
+                                        type="password"
+                                        value={confirmedPassword}
+                                        placeholder="Confirm Password" />
+                                </Fragment>
+                            )} />
                         <p>&nbsp;</p>
                         <p>
-                        Already have a user account? <a href="/signin">Click here</a> to sign
+                        Already have a user account? <Link to="/signin">Click here</Link> to sign
                         in!
                         </p>
                     </div>

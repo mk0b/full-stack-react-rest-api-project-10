@@ -1,6 +1,9 @@
 //exports a function that renders validation errors
 //also handles submit and cancel buttons for forms
+//try to rename it but form makes the most sense.
 import React from 'react';
+
+//TODO: Check after and make sure css lines up.
 
 export default (props) => {
     const {
@@ -26,7 +29,7 @@ export default (props) => {
         <ErrorsDisplay errors={errors} />
         <form onSubmit={handleSubmit}>
             {elements()}
-            <div className="pad-bottom">
+            <div className="grid-100 pad-bottom">
             <button className="button" type="submit">{submitButtonText}</button>
             <button className="button button-secondary" onClick={handleCancel}>Cancel</button>
             </div>
