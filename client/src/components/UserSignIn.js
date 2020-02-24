@@ -3,24 +3,28 @@
 //the previous screen after successfully signing in.
 
 import React, { Component, Fragment } from 'react';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 import Header from './Header';
-
-//The defaultValue were causing things to be weird I took them out
+import Form from './Form';
 
 class UserSignIn extends Component {
     //setting up state
     constructor(props) {
         super(props);
-    }
-
-    onCancel = event => {
-        event.preventDefault(); 
-        //FIXME: Figure out why this isn't working. Also once working fix in other places in app.
-        //location.href = '/';
+        this.state = {
+            emailAddress: '',
+            password: '',
+            errors: []
+        }
     }
 
     render() {
+        //setting up state to capture values
+        const {
+            emailAddress,
+            password,
+            errors
+        } = this.state;
 
         return (
             <Fragment>
@@ -28,42 +32,32 @@ class UserSignIn extends Component {
                 <div className="bounds">
                     <div className="grid-33 centered signin">
                         <h1>Sign In</h1>
-                        <div>
-                        <form>
-                            <div>
-                            <input
-                                id="emailAddress"
-                                name="emailAddress"
-                                type="text"
-                                className
-                                placeholder="Email Address"
-                            />
-                            </div>
-                            <div>
-                            <input
-                                id="password"
-                                name="password"
-                                type="password"
-                                className
-                                placeholder="Password"
-                            />
-                            </div>
-                            <div className="grid-100 pad-bottom">
-                            <button className="button" type="submit">
-                                Sign In
-                            </button>
-                            <button
-                                className="button button-secondary"
-                                onClick={this.onCancel}
-                            >
-                                Cancel
-                            </button>
-                            </div>
-                        </form>
-                        </div>
+                        <Form 
+                            cancel={this.cancel}
+                            errors={errors}
+                            submit={this.submit}
+                            submitButtonText="Sign In"
+                            elements={() => (
+                                <Fragment>
+                                    <input 
+                                        id="emailAddress"
+                                        name="emailAddress"
+                                        type="text"
+                                        value={emailAddress}
+                                        onChange={this.change}
+                                        placeholder="Email Address" />
+                                    <input 
+                                        id="password"
+                                        name="password"
+                                        type="password"
+                                        value={password}
+                                        onChange={this.change}
+                                        placeholder="Password" />
+                                </Fragment>
+                            )} />
                         <p>&nbsp;</p>
                         <p>
-                        Don't have a user account? <a href="/signup">Click here</a> to sign
+                        Don't have a user account? <Link to="/signup">Click here</Link> to sign
                         up!
                         </p>
                     </div>
