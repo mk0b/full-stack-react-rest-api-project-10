@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 //TODO: Add back Redirect if needed ^
 
 //importing components
+import Header from './Header';
 import Courses from './Courses';
 import CreateCourse from './CreateCourse';
 import UpdateCourse from './UpdateCourse';
@@ -20,6 +21,7 @@ import withContext from './Context';
 //connects user sign up with context api
 const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignInWithContext = withContext(UserSignIn);
+const HeaderWithContext = withContext(Header);
 
 //TODO: Components redirect users to the /error path when requests to 
 //the REST API return a "500 Internal Server Error" HTTP status code.
@@ -28,6 +30,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
+      <HeaderWithContext />
         <Switch>
           <Route exact path="/" component={Courses} />
           <Route path="/signup" component={UserSignUpWithContext} />

@@ -4,7 +4,6 @@
 
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import Header from './Header';
 import Form from './Form';
 
 class UserSignIn extends Component {
@@ -69,7 +68,6 @@ class UserSignIn extends Component {
 
         return (
             <Fragment>
-                <Header />
                 <div className="bounds">
                     <div className="grid-33 centered signin">
                         <h1>Sign In</h1>

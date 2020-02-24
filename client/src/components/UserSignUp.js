@@ -1,7 +1,6 @@
 //stateful class component
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import Header from './Header';
 import Form from './Form';
 
 //The defaultValue were causing things to be weird I took them out
@@ -94,7 +93,6 @@ class UserSignUp extends Component {
 
         return (
             <Fragment>
-                <Header />
                 <div className="bounds">
                     <div className="grid-33 centered signin">
                         <h1>Sign Up</h1>

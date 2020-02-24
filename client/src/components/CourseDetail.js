@@ -5,7 +5,6 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
-import Header from './Header';
 
 //TODO: add the associated user info with userInfo (at least for the By) data or get it from who is authorized?
 //TODO: Fix the formatting for description and materitals needed.
@@ -66,7 +65,6 @@ class CourseDetail extends Component {
         const { id, title, description, estimatedTime, materialsNeeded } = this.state.courseDetail;
         return (
             <Fragment>
-                <Header />
                 <div>
                     <div className="actions--bar">
                     <div className="bounds">

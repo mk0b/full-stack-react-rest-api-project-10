@@ -6,8 +6,6 @@
 //the requested course isn't owned by the authenticated user.
 
 import React, { Component, Fragment } from 'react';
-import Header from './Header';
-import axios from 'axios';
 
 class UpdateCourse extends Component {
     //setting up state
@@ -28,7 +26,6 @@ class UpdateCourse extends Component {
 
         return (
             <Fragment>
-                <Header />
                 <div className="bounds course--detail">
                     <h1>Update Course</h1>
                     <div>

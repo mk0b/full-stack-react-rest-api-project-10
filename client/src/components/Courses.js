@@ -1,7 +1,6 @@
 //stateful class component
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
-import Header from './Header';
 
 class Courses extends Component {
     //setting up state
@@ -50,7 +49,6 @@ class Courses extends Component {
 
         return (
             <Fragment>
-                <Header />
                 <div className="bounds">
                     {coursesArray}
                     <div className="grid-33">

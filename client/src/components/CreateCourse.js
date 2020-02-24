@@ -1,13 +1,12 @@
 //stateful class component
 import React, { Component, Fragment } from 'react';
-import Header from './Header';
-//TODO: Do I need axios here?
 
 //The defaultValue were causing things to be weird I took them out
 
 //TODO: Do something with the Validation erros code. 
 //TODO: Can't test this without being logged in first.
 //TODO: Fix onclick for the cancel button.
+//TODO: Implement form here
 
 class CreateCourse extends Component {
     //setting up state
@@ -24,7 +23,6 @@ class CreateCourse extends Component {
 
         return (
             <Fragment>
-                <Header />
                 <div className="bounds course--detail">
                     <h1>Create Course</h1>
                     <div>
