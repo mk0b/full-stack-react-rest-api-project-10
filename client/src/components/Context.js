@@ -1,6 +1,6 @@
 //creating what we need to use the Context API
 import React, { Component } from 'react';
-import Data from './UserData';
+import Data from './Data';
 
 const Context = React.createContext(); 
 
