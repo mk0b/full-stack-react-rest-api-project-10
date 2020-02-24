@@ -18,25 +18,45 @@ class UserSignIn extends Component {
         }
     }
 
+    change = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+
+        this.setState(() => {
+            return {
+                [name]: value
+            };
+        });
+    }
+
     submit = () => {
         const { context } = this.props;
+        //getting the page user came from
+        const { from } = this.props.location.state || { from: { pathname: '/' } };
         const { emailAddress, password } = this.state;
 
         context.actions.signIn(emailAddress, password)
         .then(user => {
+            console.log('User: ', user);
             if (user === null) {
                 this.setState(() => {
-                    return { errors: ['Sign was unsuccessful.'] };
+                    return { errors: ['Sign in was unsuccessful.'] };
                 });
             } else {
                 //send to main page if auth goes through
                 console.log(`Success! ${emailAddress} is now signed in.`);
-                this.props.history.push('/');
+                //sends the user back to the page they came from
+                this.props.history.push(from);
             }
         })
         .catch(err => {
             console.log(err);
+            this.props.history.push('/error');
         });
+    }
+
+    cancel = () => {
+        this.props.history.push('/');
     }
 
     render() {
