@@ -1,7 +1,6 @@
 //stateful class component
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import Header from './Header';
 import Form from './Form';
 
