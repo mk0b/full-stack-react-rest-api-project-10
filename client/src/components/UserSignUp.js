@@ -59,8 +59,6 @@ class UserSignUp extends Component {
             password
         };
 
-        console.log('User Data: ', user);
-
         //create new user async returns a promise
         context.data.createUser(user)
         .then(errors => {
