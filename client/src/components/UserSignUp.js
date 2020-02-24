@@ -8,7 +8,6 @@ import Form from './Form';
 //The defaultValue were causing things to be weird I took them out
 
 //TODO: Get the form working
-//TODO: Figure out why this isn't rendering
 
 class UserSignUp extends Component {
     //setting up state
@@ -19,7 +18,7 @@ class UserSignUp extends Component {
             lastName: '',
             emailAddress: '',
             password: '',
-            confirmedPassword: '',
+            confirmPassword: '',
             errors: []
         }
     }
@@ -45,8 +44,11 @@ class UserSignUp extends Component {
             firstName,
             lastName,
             emailAddress,
-            password
+            password,
+            confirmPassword
         } = this.state;
+
+        console.log(confirmPassword);
 
         //new user payload
         //will be passed to createUser()
@@ -89,7 +91,7 @@ class UserSignUp extends Component {
             lastName,
             emailAddress,
             password,
-            confirmedPassword,
+            confirmPassword,
             errors
         } = this.state;
 
@@ -138,7 +140,7 @@ class UserSignUp extends Component {
                                         id="confirmPassword"
                                         name="confirmPassword"
                                         type="password"
-                                        value={confirmedPassword}
+                                        value={confirmPassword}
                                         onChange={this.change}
                                         placeholder="Confirm Password" />
                                 </Fragment>
