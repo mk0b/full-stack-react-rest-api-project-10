@@ -19,6 +19,7 @@ class Header extends React.PureComponent {
     render () {
         const { context } = this.props;
         const authUser = context.authenticatedUser;
+
         return (
             <Fragment>
                 <div className="header">
@@ -27,7 +28,7 @@ class Header extends React.PureComponent {
                     <nav>
                         {authUser ? (
                             <Fragment>
-                                <span>Welcome, {authUser.name}! </span>
+                                <span>Welcome, {`${authUser.firstName}  ${authUser.lastName}`}! </span>
                                 <NavLink className="signout" to="/signout"></NavLink>
                             </Fragment>
                         ) : (
