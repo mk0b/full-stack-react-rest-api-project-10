@@ -1,7 +1,8 @@
 //creating what we need to use the Context API
 import React, { Component } from 'react';
-import Data from './Data';
 
+import Data from './Data';
+import Cookies from 'js-cookie';
 const Context = React.createContext(); 
 
 export class Provider extends Component {

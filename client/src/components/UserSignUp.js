@@ -3,10 +3,6 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Form from './Form';
 
-//The defaultValue were causing things to be weird I took them out
-
-//TODO: Get the form working
-
 class UserSignUp extends Component {
     //setting up state
     constructor(props) {
@@ -65,6 +61,13 @@ class UserSignUp extends Component {
                 this.setState({ errors });
             } else {
                 console.log(`${emailAddress} is succesfully signed up and authenticated!`);
+                //after signup sign them in
+                context.actions.signIn(emailAddress, password)
+                .then(() => {
+                    //after signup sending to /
+                    this.props.history.push('/');
+                })
+                .catch();
             }
         })
         .catch(err => {

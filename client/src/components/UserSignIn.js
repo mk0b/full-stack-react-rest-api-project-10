@@ -32,6 +32,9 @@ class UserSignIn extends Component {
         const { context } = this.props;
         //getting the page user came from
         const { from } = this.props.location.state || { from: { pathname: '/' } };
+        console.log('From: ', from);
+        console.log('From Pathname', from.pathname);
+        console.log('From Pathname', typeof from.pathname);
         const { emailAddress, password } = this.state;
 
         context.actions.signIn(emailAddress, password)
@@ -45,7 +48,8 @@ class UserSignIn extends Component {
                 //send to main page if auth goes through
                 console.log(`Success! ${emailAddress} is now signed in.`);
                 //sends the user back to the page they came from
-                this.props.history.push(from);
+                //FIXME: This isn't routing back to where the user came from
+                this.props.history.push(from.pathname);
             }
         })
         .catch(err => {
