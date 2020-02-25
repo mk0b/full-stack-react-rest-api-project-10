@@ -15,6 +15,7 @@ import NotFound from './NotFound';
 import UnhandledError from './UnhandledError';
 import Forbidden from './Forbidden';
 import UserSignOut from './UserSignOut';
+import PrivateRoute from './PrivateRoute';
 
 //importing for userauth
 import withContext from './Context';
@@ -35,8 +36,8 @@ function App() {
           <Route exact path="/" component={Courses} />
           <Route path="/signup" component={UserSignUpWithContext} />
           <Route path="/signin" component={UserSignInWithContext} />
-          <Route path="/courses/create" component={CreateCourse} />
-          <Route path="/courses/:id/update" component={UpdateCourse} />
+          <PrivateRoute path="/courses/create" component={CreateCourse} />
+          <PrivateRoute path="/courses/:id/update" component={UpdateCourse} />
           <Route path="/courses/:id" component={CourseDetail} />
           <Route path="/error" component={UnhandledError} />
           <Route path="/forbidden" component={Forbidden} />
