@@ -5,11 +5,14 @@
 //(i.e. the list of courses).
 
 import React, { Fragment } from 'react';
+import { Redirect } from 'react-router-dom';
 
-const UserSignOut = () => (
-    <Fragment>
-        <p>This is just a placeholder. Remove!</p>
-    </Fragment>
-);
+const UserSignOut = ({ context }) => {
+    context.actions.signOut();
+
+    return(
+        <Redirect to="/" />
+    );
+}
 
 export default UserSignOut;
