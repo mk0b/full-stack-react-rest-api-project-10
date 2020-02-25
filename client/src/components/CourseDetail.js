@@ -6,7 +6,6 @@ import { withRouter } from 'react-router-dom';
 const ReactMarkdown = require('react-markdown');
 
 //TODO: add the associated user info with userInfo (at least for the By) data or get it from who is authorized?
-//TODO: Do the markdown formattingthing.
 //TODO: redirects users to the /notfound path if the requested course isn't returned from the REST API.
 //TODO: Update Course and Delete Course buttons only show if there is an authenticated user.
 //TODO: The auth user id matches that of the user who owns the course.
