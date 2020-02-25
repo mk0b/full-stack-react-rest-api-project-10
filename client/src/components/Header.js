@@ -29,7 +29,7 @@ class Header extends React.PureComponent {
                         {authUser ? (
                             <Fragment>
                                 <span>Welcome, {`${authUser.firstName}  ${authUser.lastName}`}! </span>
-                                <NavLink className="signout" to="/signout"></NavLink>
+                                <NavLink className="signout" to="/signout">Sign Out</NavLink>
                             </Fragment>
                         ) : (
                             <Fragment>
