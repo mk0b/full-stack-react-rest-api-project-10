@@ -3,6 +3,7 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
+const ReactMarkdown = require('react-markdown');
 
 //TODO: add the associated user info with userInfo (at least for the By) data or get it from who is authorized?
 //TODO: Do the markdown formattingthing.
@@ -92,7 +93,7 @@ class CourseDetail extends Component {
                         </div>
                         <div className="course--description">
                         <p>
-                            {description}
+                            <ReactMarkdown source={description} />
                         </p>
                         </div>
                     </div>
@@ -106,7 +107,7 @@ class CourseDetail extends Component {
                             <li className="course--stats--list--item">
                             <h4>Materials Needed</h4>
                             <ul>
-                                {materialsNeeded}
+                                <ReactMarkdown source={materialsNeeded} />
                             </ul>
                             </li>
                         </ul>
