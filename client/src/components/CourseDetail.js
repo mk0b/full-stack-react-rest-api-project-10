@@ -1,14 +1,14 @@
 //stateful class component
-//TODO: redirects users to the /notfound path 
-//if the requested course isn't returned from the REST API.
 
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 
 //TODO: add the associated user info with userInfo (at least for the By) data or get it from who is authorized?
-//TODO: Fix the formatting for description and materitals needed.
-//TODO: Delete course needs to immediately send a delete to the API need to make it a mini form?
+//TODO: Do the markdown formattingthing.
+//TODO: redirects users to the /notfound path if the requested course isn't returned from the REST API.
+//TODO: Update Course and Delete Course buttons only show if there is an authenticated user.
+//TODO: The auth user id matches that of the user who owns the course.
 
 class CourseDetail extends Component {
     //setting up state

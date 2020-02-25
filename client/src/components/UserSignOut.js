@@ -1,12 +1,9 @@
 //stateless functional component
 
-//TODO: The component signs out the authenticated 
-//user and redirects the user to the default route 
-//(i.e. the list of courses).
-
 import React, { Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 
+//signs out user/removes cookie and redirects to home page
 const UserSignOut = ({ context }) => {
     context.actions.signOut();
 
