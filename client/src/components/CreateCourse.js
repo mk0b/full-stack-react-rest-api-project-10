@@ -92,14 +92,14 @@ class CreateCourse extends Component {
                                     </div>
                                     
                                     <div className="course--description">
-                                        <h4 className="course--label">Course</h4>
+                                        <h4 className="course--label">Description</h4>
                                         <textarea 
                                             id="description"
                                             name="description"
                                             className="desc"
                                             value={description}
                                             onChange={this.change}
-                                            placeholder="Cousre description..." />
+                                            placeholder="Course description..." />
                                     </div>
                                     <div className="grid-25 grid-right">
                                         <div className="course--stats">
