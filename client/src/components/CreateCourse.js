@@ -2,12 +2,7 @@
 import React, { Component, Fragment } from 'react';
 import Form from './Form';
 
-//The defaultValue were causing things to be weird I took them out
-
-//TODO: Do something with the Validation erros code. 
-//TODO: Can't test this without being logged in first.
-//TODO: Fix onclick for the cancel button.
-//TODO: Implement form here
+//TODO: Can't test this without being signed in first.
 
 class CreateCourse extends Component {
     //setting up state
@@ -54,6 +49,11 @@ class CreateCourse extends Component {
         }
 
         //TODO: create new user using context 
+    }
+
+    cancel = () => {
+        //redirecting back to the main public page /
+        this.props.history.push('/');
     }
 
     render() {
