@@ -1,7 +1,6 @@
 import React from 'react';
 import '../css/index.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-//TODO: Add back Redirect if needed ^
 
 //importing components
 import Header from './Header';
@@ -28,6 +27,8 @@ const UserSignOutWithContext = withContext(UserSignOut);
 //TODO: Components redirect users to the /error path when requests to 
 //the REST API return a "500 Internal Server Error" HTTP status code.
 
+//TODO: Put back PrivateRoute to create course. Need to remove because it wont let me see this page even though I am signed in.
+
 function App() {
   return (
     <BrowserRouter>
@@ -37,7 +38,7 @@ function App() {
           <Route exact path="/" component={Courses} />
           <Route path="/signup" component={UserSignUpWithContext} />
           <Route path="/signin" component={UserSignInWithContext} />
-          <PrivateRoute path="/courses/create" component={CreateCourse} />
+          <Route path="/courses/create" component={CreateCourse} />
           <PrivateRoute path="/courses/:id/update" component={UpdateCourse} />
           <Route path="/courses/:id" component={CourseDetail} />
           <Route path="/error" component={UnhandledError} />
