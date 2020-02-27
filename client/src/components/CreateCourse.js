@@ -50,7 +50,7 @@ class CreateCourse extends Component {
 
         //TODO: Need to send/set the authetnicated user somehow. I thinkwe did this somewhere before set it as a header.
         const emailAddress = context.authenticatedUser.emailAddress;
-        const password = context.password;
+        const password = context.authenticatedUser.password;
         console.log('Creds: ', emailAddress, password);
 
         //grab the id using context.authenticatedUser.id for the newCourse payload
