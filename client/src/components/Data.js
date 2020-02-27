@@ -58,8 +58,9 @@ export default class Data {
     }
 
     //create new course
-    async createCourse(course) {
-        const response = await this.api('/courses', 'POST', course);
+    //requires auth and need to pass creds
+    async createCourse(course, emailAddress, password) {
+        const response = await this.api('/courses', 'POST', course, true, { emailAddress, password });
         if (response.status === 201) {
             return [];
         }
