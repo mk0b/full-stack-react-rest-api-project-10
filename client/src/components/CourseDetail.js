@@ -36,7 +36,6 @@ class CourseDetail extends Component {
     onDelete = event => {
         //use the id and insert into the api call for the delete function.
         console.log('Clicked: ', event.target);
-        //send back to the / page after deletion
         if (window.confirm('Are you sure you want to delete this course? This action cannot be undone.')) {
             console.log('Delete Confirmed')
             const { id } = this.props.match.params;
@@ -48,7 +47,7 @@ class CourseDetail extends Component {
                 console.log('Error deleting data: ', error);
             });
             //redirect back to home page
-            //this.props.history.push('/');
+            this.props.history.push('/');
         } else {
             console.log('Delete Canceled');
             
@@ -60,6 +59,7 @@ class CourseDetail extends Component {
         this.apiCall(id);
     }
 
+    //FIXME: Switch the delete link to a button? Getting a warning in the log.
     render() {
         console.log(this.state.courseDetail);
         const { id, title, description, estimatedTime, materialsNeeded } = this.state.courseDetail;
@@ -73,7 +73,7 @@ class CourseDetail extends Component {
                             <a className="button" href={`/courses/${id}/update`}>
                             Update Course
                             </a>
-                            <a onClick={this.onDelete} className="button" href="#">
+                            <a onClick={this.onDelete} className="button">
                             Delete Course
                             </a>
                         </span>

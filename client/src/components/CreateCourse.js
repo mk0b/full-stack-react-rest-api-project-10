@@ -29,6 +29,7 @@ class CreateCourse extends Component {
         });
     }
 
+    //TODO: Remove userId here if it doesn't break anything.
     submit = () => {
         const { context } = this.props;
         const {
