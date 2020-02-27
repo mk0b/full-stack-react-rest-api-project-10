@@ -50,7 +50,7 @@ class CreateCourse extends Component {
 
         //TODO: Need to send/set the authetnicated user somehow. I thinkwe did this somewhere before set it as a header.
         const emailAddress = context.authenticatedUser.emailAddress;
-        const password = context.authenticatedUser.password;
+        const password = context.password;
         console.log('Creds: ', emailAddress, password);
 
         //grab the id using context.authenticatedUser.id for the newCourse payload
@@ -58,7 +58,7 @@ class CreateCourse extends Component {
 
         console.log('newCourse: ', newCourse);
         //create the new course using context.createCourse
-        context.data.createCourse(newCourse)
+        context.data.createCourse(newCourse, emailAddress, password)
         .then(errors => {
             if (errors.length) {
                 this.setState({ errors });
