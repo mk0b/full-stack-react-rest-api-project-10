@@ -37,7 +37,6 @@ class CreateCourse extends Component {
             description,
             estimatedTime,
             materialsNeeded,
-            userId,
         } = this.state;
 
         //new course payload
