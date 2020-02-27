@@ -64,11 +64,9 @@ class CreateCourse extends Component {
                 this.setState({ errors });
             } else {
                 console.log(`User ${context.authenticatedUser.emailAddress} succesfully created this course: ${newCourse}`);
+                //after course created send to /
+                this.props.history.push('/');
             }
-        })
-        .then(() => {
-            //after course created send to /
-            this.props.history.push('/');
         })
         .catch(err => {
             console.log('Something went wrong: ', err);
