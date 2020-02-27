@@ -67,7 +67,6 @@ class UserSignUp extends Component {
                     //after signup sending to /
                     this.props.history.push('/');
                 })
-                .catch();
             }
         })
         .catch(err => {

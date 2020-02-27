@@ -48,7 +48,27 @@ class CreateCourse extends Component {
             userId
         }
 
-        //TODO: create new user using context 
+        //grab the id using context.authenticatedUser.id for the newCourse payload
+        console.log('Auth User Info: ', context.authenticatedUser);
+
+        //create the new course using context.createCourse
+        context.data.createCourse(newCourse)
+        .then(errors => {
+            if (errors.length) {
+                this.setState({ errors });
+            } else {
+                console.log(`User ${context.authenticatedUser.emailAddress} succesfully created this course: ${newCourse}`);
+            }
+        })
+        .then(() => {
+            //after course created send to /
+            this.props.history.push('/');
+        })
+        .catch(err => {
+            console.log('Something went wrong: ', err);
+            //redirect to err page
+            this.props.history.push('/error');
+        });
     }
 
     cancel = () => {
@@ -90,9 +110,7 @@ class CreateCourse extends Component {
                                             placeholder="Course title..." />
                                     <p>By Joe Smith</p>
                                     </div>
-                                    
                                     <div className="course--description">
-                                        <h4 className="course--label">Description</h4>
                                         <textarea 
                                             id="description"
                                             name="description"
