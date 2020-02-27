@@ -2,8 +2,6 @@
 import React, { Component, Fragment } from 'react';
 import Form from './Form';
 
-//TODO: Can't test this without being signed in first.
-
 class CreateCourse extends Component {
     //setting up state
     constructor(props) {
@@ -48,15 +46,10 @@ class CreateCourse extends Component {
             userId: context.authenticatedUser.id
         }
 
-        //TODO: Need to send/set the authetnicated user somehow. I thinkwe did this somewhere before set it as a header.
         const emailAddress = context.authenticatedUser.emailAddress;
         const password = context.authenticatedUser.password;
         console.log('Creds: ', emailAddress, password);
 
-        //grab the id using context.authenticatedUser.id for the newCourse payload
-        console.log('Auth User Info: ', context.authenticatedUser);
-
-        console.log('newCourse: ', newCourse);
         //create the new course using context.createCourse
         context.data.createCourse(newCourse, emailAddress, password)
         .then(errors => {
