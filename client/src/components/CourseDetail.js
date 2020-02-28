@@ -38,13 +38,18 @@ class CourseDetail extends Component {
         console.log('Clicked: ', event.target);
         if (window.confirm('Are you sure you want to delete this course? This action cannot be undone.')) {
             console.log('Delete Confirmed')
+            //grabbing the id of the course from the url
             const { id } = this.props.match.params;
-            axios.delete(`http://localhost:5000/api/courses/${id}`)
-            .then(response => {
-                console.log('Response: ', response);
-            })
-            .catch(error => {
-                console.log('Error deleting data: ', error);
+            const { context } = this.props;
+            //getting the email and password of current auth user
+            const emailAddress = context.authenticatedUser.emailAddress;
+            const password = context.authenticatedUser.password
+
+            //make the call using the method in data via context
+            context.data.deleteCourse(id, emailAddress, password)
+            .catch(err => {
+                console.log('Something went wrong: ', err);
+                this.props.history.push('/error');
             });
             //redirect back to home page
             this.props.history.push('/');

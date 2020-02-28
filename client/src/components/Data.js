@@ -79,7 +79,7 @@ export default class Data {
     //requires auth and need to pass creds
     async updateCourse(course, emailAddress, password) {
         const response = await this.api(`/courses/${course.id}`, 'PUT', course, true, { emailAddress, password });
-        if (response.status === 200) {
+        if (response.status === 204) {
             return [];
         }
         else if (response.status === 400) {
@@ -101,6 +101,19 @@ export default class Data {
             return response.json().then(data => data);
         } else if (response.status === 401) {
                 return null;
+            } else {
+            throw new Error();
+            }
+    }    
+
+    //delete course
+    //204 no content is good.
+    async deleteCourse(courseId, emailAddress, password) {
+        const response = await this.api(`/courses/${courseId}`, 'DELETE', null, true, { emailAddress, password });
+        if (response.status === 204) {
+            return [];
+        } else if (response.status === 401) {
+                return response.json().then(data => data);
             } else {
             throw new Error();
             }
