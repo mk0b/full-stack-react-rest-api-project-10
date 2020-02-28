@@ -11,22 +11,19 @@ class Courses extends Component {
         }
     }
 
-    //all courses api call
-    apiCall = () => {
-        axios.get('http://localhost:5000/api/courses')
-        .then(response => {
-            console.log(response)
+    componentDidMount() {
+        //making the call via context and data to get all course data
+        const { context } = this.props;
+        context.data.getCourses()
+        .then(courseData => {
+            console.log('Courses data response: ', courseData);
             this.setState({
-                courses: response.data
+                courses: courseData
             });
         })
-        .catch(error => {
-            console.log('Error fetching and parsing data: ', error);
+        .catch(err => {
+            console.log('Something went wrong: ', err);
         });
-    }
-    
-    componentDidMount() {
-        this.apiCall();
     }
 
     render() {

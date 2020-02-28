@@ -63,7 +63,8 @@ class CourseDetail extends Component {
     //FIXME: Switch the delete link to a button? Getting a warning in the log.
     render() {
         const { id, title, description, estimatedTime, materialsNeeded } = this.state.courseDetail;
-        
+        //TODO:  Add back user and put an if statement in the {} if user exists then display the first name and last name.
+        //I don't know why it's showing up as undefined.   
         return (
             <Fragment>
                 <div>

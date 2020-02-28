@@ -26,6 +26,7 @@ const UserSignOutWithContext = withContext(UserSignOut);
 const CreateCourseWithContext = withContext(CreateCourse);
 const UpdateCourseWithContext = withContext(UpdateCourse);
 const CourseDetailWithContext = withContext(CourseDetail);
+const CoursesWithContext = withContext(Courses);
 
 //TODO: Components redirect users to the /error path when requests to 
 //the REST API return a "500 Internal Server Error" HTTP status code.
@@ -38,7 +39,7 @@ function App() {
       <div className="App">
       <HeaderWithContext />
         <Switch>
-          <Route exact path="/" component={Courses} />
+          <Route exact path="/" component={CoursesWithContext} />
           <Route path="/signup" component={UserSignUpWithContext} />
           <Route path="/signin" component={UserSignInWithContext} />
           <Route path="/courses/create" component={CreateCourseWithContext} />
