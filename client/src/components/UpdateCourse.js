@@ -13,6 +13,7 @@ class UpdateCourse extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: null,
             title: '',
             description: '',
             estimatedTime: '',
@@ -20,6 +21,27 @@ class UpdateCourse extends Component {
             userId: null,
             errors: []
         }
+    }
+
+    componentDidMount() {
+        //getting the existing course data
+        const { context } = this.props;
+        const courseId = this.props.match.params.id;
+        context.data.getCourse(courseId)
+        .then(course => {
+            console.log('Response: ', course);
+            this.setState({
+                id: course.id,
+                title: course.title,
+                description: course.description,
+                estimatedTime: course.estimatedTime,
+                materialsNeeded: course.materialsNeeded,
+                userId: course.userId
+            });
+        })
+        .catch(err => {
+            console.log('Something went wrong: ', err);
+        });
     }
 
     change = (event) => {
@@ -44,18 +66,35 @@ class UpdateCourse extends Component {
 
         //updated course payload
         const updateCourse = {
+            id: this.props.match.params.id,
             title,
             description,
             estimatedTime,
             materialsNeeded,
             userId: context.authenticatedUser.id
         }
+        console.log('updateCourse: ', updateCourse);
 
+        //get specific course to pre-populate the fields to be changed
         const emailAddress = context.authenticatedUser.emailAddress;
         const password = context.authenticatedUser.password;
         console.log('Creds: ', emailAddress, password);
 
-        //TODO: Setup context api call here
+        //calling updateCourse
+        context.data.updateCourse(updateCourse, emailAddress, password)
+        .then(errors => {
+            if (errors.length) {
+                this.setState({ errors });
+            } else {
+                console.log(`Course #${updateCourse.id} has been succesfully updated!`);
+                //after course updated send back to course detail
+                //this.props.history.push(`/courses/${updateCourse.id}`);
+            }
+        })
+        .catch(err => {
+            console.log('Something went wrong: ', err);
+            //TODO: Add error redirects here
+        });
     }
 
     cancel = () => {
@@ -76,13 +115,13 @@ class UpdateCourse extends Component {
         return (
             <Fragment>
                 <div className="bounds course--detail">
-                    <h1>Create Course</h1>
+                    <h1>Update Course</h1>
                     <div className="grid-66">
                         <Form 
                             cancel={this.cancel}
                             errors={errors}
                             submit={this.submit}
-                            submitButtonText="Create Course"
+                            submitButtonText="Update Course"
                             elements={() => (
                                 <Fragment>
                                     <div className="course--header">

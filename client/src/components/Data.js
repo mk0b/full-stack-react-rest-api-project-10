@@ -74,4 +74,35 @@ export default class Data {
             throw new Error();
         }
     }
+
+    //update an existing course
+    //requires auth and need to pass creds
+    async updateCourse(course, emailAddress, password) {
+        const response = await this.api(`/courses/${course.id}`, 'PUT', course, true, { emailAddress, password });
+        if (response.status === 201) {
+            return [];
+        }
+        else if (response.status === 400) {
+            return response.json().then(data => {
+                console.log('Error from Data.js: ', data);
+                return data;
+            });
+        }
+        else {
+            throw new Error();
+        }
+    }
+    
+    //get specific course
+    //requires auth and need to pass creds
+    async getCourse(courseId) {
+        const response = await this.api(`/courses/${courseId}`, 'GET');
+        if (response.status === 200) {
+            return response.json().then(data => data);
+        } else if (response.status === 401) {
+                return null;
+            } else {
+            throw new Error();
+            }
+    }    
 }
