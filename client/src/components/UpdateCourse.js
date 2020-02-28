@@ -27,20 +27,33 @@ class UpdateCourse extends Component {
         //getting the existing course data
         const { context } = this.props;
         const courseId = this.props.match.params.id;
+        const authUserId = context.authenticatedUser.id;
+        console.log('Auth user id: ', authUserId);
         context.data.getCourse(courseId)
         .then(course => {
-            console.log('Response: ', course);
-            this.setState({
-                id: course.id,
-                title: course.title,
-                description: course.description,
-                estimatedTime: course.estimatedTime,
-                materialsNeeded: course.materialsNeeded,
-                userId: course.userId
-            });
+            const courseOwnerId = course.userId
+            console.log('Course owner id: ', courseOwnerId);
+            if (course) {
+                if (courseOwnerId === authUserId) {
+                    console.log('Response: ', course);
+                    this.setState({
+                        id: course.id,
+                        title: course.title,
+                        description: course.description,
+                        estimatedTime: course.estimatedTime,
+                        materialsNeeded: course.materialsNeeded,
+                        userId: course.userId
+                    });
+                } else {
+                    this.props.history.push('/forbidden');
+                }
+            } else {
+                this.props.history.push('/notfound');
+            }
         })
         .catch(err => {
             console.log('Something went wrong: ', err);
+            this.props.history.push('/error');
         });
     }
 

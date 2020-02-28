@@ -23,13 +23,18 @@ class CourseDetail extends Component {
         const { id } = this.props.match.params;
         context.data.getCourse(id)
         .then(course => {
-            console.log('Course data response: ', course);
-            this.setState({
-                courseDetail: course
-            });
+            if (course) {
+                console.log('Course data response: ', course);
+                this.setState({
+                    courseDetail: course
+                });
+            } else {
+                this.props.history.push('/notfound');
+            }
         })
         .catch(err => {
             console.log('Something went wrong: ', err);
+            this.props.history.push('/error');
         });
 
     }
@@ -64,7 +69,7 @@ class CourseDetail extends Component {
     render() {
         const { id, title, description, estimatedTime, materialsNeeded } = this.state.courseDetail;
         //TODO:  Add back user and put an if statement in the {} if user exists then display the first name and last name.
-        //I don't know why it's showing up as undefined.   
+        //I don't know why it's showing up as undefined.
         return (
             <Fragment>
                 <div>
