@@ -1,6 +1,5 @@
 //stateful class component
 import React, { Component, Fragment } from 'react';
-import axios from 'axios';
 
 class Courses extends Component {
     //setting up state
@@ -33,6 +32,7 @@ class Courses extends Component {
         //using map to create a new array that I can include below
         //to add all of the courses in the db
         //FIXME: I am getting a unique key prop warning but it's not a list so I can't figure out where it wants me to put it.
+        //TODO: Add Fragment here? Can I send a key into a fragment?
         const coursesArray = courses.map(course => {
             return (
                 <div className="grid-33">

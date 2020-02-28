@@ -32,11 +32,9 @@ export default class Data {
         const response = await this.api(`/users`, 'GET', null, true, { emailAddress, password });
         if (response.status === 200) {
             return response.json().then(data => data);
-        }
-        else if (response.status === 401) {
+        } else if (response.status === 401) {
             return null;
-        }
-        else {
+        } else {
             throw new Error();
         }
     }
@@ -45,14 +43,12 @@ export default class Data {
         const response = await this.api('/users', 'POST', user);
         if (response.status === 201) {
             return [];
-        }
-        else if (response.status === 400) {
+        } else if (response.status === 400) {
             return response.json().then(data => {
                 console.log('Error from Data.js: ', data);
                 return data;
             });
-        }
-        else {
+        } else {
             throw new Error();
         }
     }
@@ -63,14 +59,12 @@ export default class Data {
         const response = await this.api('/courses', 'POST', course, true, { emailAddress, password });
         if (response.status === 201) {
             return [];
-        }
-        else if (response.status === 400) {
+        } else if (response.status === 400) {
             return response.json().then(data => {
                 console.log('Error from Data.js: ', data);
                 return data;
             });
-        }
-        else {
+        } else {
             throw new Error();
         }
     }
@@ -81,14 +75,12 @@ export default class Data {
         const response = await this.api(`/courses/${course.id}`, 'PUT', course, true, { emailAddress, password });
         if (response.status === 204) {
             return [];
-        }
-        else if (response.status === 400) {
+        } else if (response.status === 400) {
             return response.json().then(data => {
                 console.log('Error from Data.js: ', data);
                 return data;
             });
-        }
-        else {
+        } else {
             throw new Error();
         }
     }
@@ -100,10 +92,10 @@ export default class Data {
         if (response.status === 200) {
             return response.json().then(data => data);
         } else if (response.status === 401) {
-                return null;
-            } else {
-                throw new Error();
-            }
+            return null;
+        } else {
+            throw new Error();
+        }
     }    
 
     //get all existing courses
@@ -112,10 +104,10 @@ export default class Data {
         if (response.status === 200) {
             return response.json().then(data => data);
         } else if (response.status === 401) {
-                return null;
-            } else {
-                throw new Error();
-            }
+            return null;
+        } else {
+            throw new Error();
+        }
     }    
 
 
@@ -126,9 +118,9 @@ export default class Data {
         if (response.status === 204) {
             return [];
         } else if (response.status === 401) {
-                return response.json().then(data => data);
-            } else {
-                throw new Error();
-            }
+            return response.json().then(data => data);
+        } else {
+            throw new Error();
+        }
     }    
 }
