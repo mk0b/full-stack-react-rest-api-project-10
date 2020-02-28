@@ -58,24 +58,25 @@ class UpdateCourse extends Component {
     submit = () => {
         const { context } = this.props;
         const {
-            title,
-            description,
-            estimatedTime,
-            materialsNeeded
-        } = this.state;
-
-        //updated course payload
-        const updateCourse = {
-            id: this.props.match.params.id,
+            id,
             title,
             description,
             estimatedTime,
             materialsNeeded,
-            userId: context.authenticatedUser.id
+            userId
+        } = this.state;
+
+        //updated course payload
+        const updateCourse = {
+            id,
+            title,
+            description,
+            estimatedTime,
+            materialsNeeded,
+            userId
         }
         console.log('updateCourse: ', updateCourse);
 
-        //get specific course to pre-populate the fields to be changed
         const emailAddress = context.authenticatedUser.emailAddress;
         const password = context.authenticatedUser.password;
         console.log('Creds: ', emailAddress, password);

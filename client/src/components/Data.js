@@ -79,7 +79,7 @@ export default class Data {
     //requires auth and need to pass creds
     async updateCourse(course, emailAddress, password) {
         const response = await this.api(`/courses/${course.id}`, 'PUT', course, true, { emailAddress, password });
-        if (response.status === 201) {
+        if (response.status === 200) {
             return [];
         }
         else if (response.status === 400) {
