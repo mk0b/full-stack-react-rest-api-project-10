@@ -1,7 +1,6 @@
 //stateful class component
 
 import React, { Component, Fragment } from 'react';
-import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 const ReactMarkdown = require('react-markdown');
 
@@ -15,22 +14,24 @@ class CourseDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            courseDetail: {}
+            courseDetail: []
         }
     }
 
-    //api call to get the specific course id that was clicked
-    apiCall = (courseId) => {
-        axios.get(`http://localhost:5000/api/courses/${courseId}`)
-        .then(response => {
-            console.log(response)
+    componentDidMount() {
+        const { context } = this.props;
+        const { id } = this.props.match.params;
+        context.data.getCourse(id)
+        .then(course => {
+            console.log('Course data response: ', course);
             this.setState({
-                courseDetail: response.data
+                courseDetail: course
             });
         })
-        .catch(error => {
-            console.log('Error fetching and parsing data: ', error);
+        .catch(err => {
+            console.log('Something went wrong: ', err);
         });
+
     }
 
     onDelete = event => {
@@ -59,15 +60,10 @@ class CourseDetail extends Component {
         }
     }
 
-    componentDidMount() {
-        const { id } = this.props.match.params; 
-        this.apiCall(id);
-    }
-
     //FIXME: Switch the delete link to a button? Getting a warning in the log.
     render() {
-        console.log(this.state.courseDetail);
         const { id, title, description, estimatedTime, materialsNeeded } = this.state.courseDetail;
+        
         return (
             <Fragment>
                 <div>
@@ -93,7 +89,7 @@ class CourseDetail extends Component {
                         <div className="course--header">
                         <h4 className="course--label">Course</h4>
                         <h3 className="course--title">{title}</h3>
-                        <p>By person here</p>
+                        <p>By {}</p>
                         </div>
                         <div className="course--description">
                         <p>
