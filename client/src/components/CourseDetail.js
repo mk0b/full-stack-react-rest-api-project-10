@@ -64,6 +64,9 @@ class CourseDetail extends Component {
 
     render() {
         console.log(this.state.courseDetail);
+        const { context } = this.props;
+        const authUser = context.authenticatedUser;
+        console.log(authUser);
         const { id, title, description, estimatedTime, materialsNeeded, userInfo} = this.state.courseDetail;
         console.log(userInfo);
         //was able to figure out how to access the nested object because of this article: https://hackernoon.com/accessing-nested-objects-in-javascript-f02f1bd6387f
@@ -73,21 +76,35 @@ class CourseDetail extends Component {
             <Fragment>
                 <div>
                     <div className="actions--bar">
-                    <div className="bounds">
-                        <div className="grid-100">
-                        <span>
-                            <a className="button" href={`/courses/${id}/update`}>
-                            Update Course
-                            </a>
-                            <button onClick={this.onDelete} className="button">
-                            Delete Course
-                            </button>
-                        </span>
-                        <a className="button button-secondary" href="/">
-                            Return to List
-                        </a>
-                        </div>
-                    </div>
+                    {authUser ? (
+                            <Fragment>
+                            <div className="bounds">
+                                <div className="grid-100">
+                                <span>
+                                    <a className="button" href={`/courses/${id}/update`}>
+                                    Update Course
+                                    </a>
+                                    <button onClick={this.onDelete} className="button">
+                                    Delete Course
+                                    </button>
+                                </span>
+                                <a className="button button-secondary" href="/">
+                                    Return to List
+                                </a>
+                            </div>
+                            </div>
+                            </Fragment>
+                        ) : (
+                            <Fragment>
+                            <div className="bounds">
+                                <div className="grid-100">
+                                <a className="button button-secondary" href="/">
+                                    Return to List
+                                </a>
+                                </div>
+                            </div>
+                            </Fragment>
+                        )}
                     </div>
                     <div className="bounds course--detail">
                     <div className="grid-66">
