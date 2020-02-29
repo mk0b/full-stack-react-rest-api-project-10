@@ -30,7 +30,6 @@ class UserSignUp extends Component {
         });
     }
 
-    //TODO: Validate confirmed password on submit
     submit = () => {
         const { context } = this.props;
         //destructuring to make assigning these easier in user
@@ -42,8 +41,6 @@ class UserSignUp extends Component {
             confirmPassword
         } = this.state;
 
-        console.log(confirmPassword);
-
         //new user payload
         //will be passed to createUser()
         //don't need to pass confirmedPassword to the API
@@ -54,23 +51,36 @@ class UserSignUp extends Component {
             password
         };
 
-        //create new user async returns a promise
-        context.data.createUser(user)
-        .then(errors => {
-            if (errors.length) {
-                this.setState({ errors });
-            } else {
-                console.log(`${emailAddress} is succesfully signed up and authenticated!`);
-                //after signup sign them in
-                context.actions.signIn(emailAddress, password);
-            }
-        })
-        .catch(err => {
-            //handle rejected promises
-            console.log('Something went wrong: ', err)
-            //redirect to error page
-            this.props.history.push('/error');
-        });
+        console.log('Confirm password: ', confirmPassword);
+        console.log('Password: ', password);
+        //if passwords match submit the form
+        if (confirmPassword === password) {
+            //create new user async returns a promise
+            context.data.createUser(user)
+            .then(errors => {
+                if (errors.length) {
+                    this.setState({ errors });
+                } else {
+                    console.log(`${emailAddress} is succesfully signed up and authenticated!`);
+                    //after signup sign them in
+                    context.actions.signIn(emailAddress, password);
+                }
+            })
+            .then(() => {
+                this.props.history.push('/');
+            })
+            .catch(err => {
+                //handle rejected promises
+                console.log('Something went wrong: ', err)
+                //redirect to error page
+                this.props.history.push('/error');
+            });        
+        } else {
+            //if passwords don't match throw a validation error
+            this.setState({ 
+                errors: 'Passwords do not match. Please make sure password and confirm password match.' 
+            });
+        }
     }
 
     cancel = () => {
