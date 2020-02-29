@@ -64,9 +64,12 @@ class CourseDetail extends Component {
 
     //FIXME: Switch the delete link to a button? Getting a warning in the log.
     render() {
-        const { id, title, description, estimatedTime, materialsNeeded } = this.state.courseDetail;
-        //TODO:  Add back user and put an if statement in the {} if user exists then display the first name and last name.
-        //I don't know why it's showing up as undefined.
+        console.log(this.state.courseDetail);
+        const { id, title, description, estimatedTime, materialsNeeded, userInfo} = this.state.courseDetail;
+        console.log(userInfo);
+        //was able to figure out how to access the nested object because of this article: https://hackernoon.com/accessing-nested-objects-in-javascript-f02f1bd6387f
+        const userName = userInfo ? `${userInfo.firstName} ${userInfo.lastName}` : null;
+        console.log(userName);
         return (
             <Fragment>
                 <div>
@@ -92,7 +95,7 @@ class CourseDetail extends Component {
                         <div className="course--header">
                         <h4 className="course--label">Course</h4>
                         <h3 className="course--title">{title}</h3>
-                        <p>By {}</p>
+                        <p>By {userName} </p>
                         </div>
                         <div className="course--description">
                         <p>

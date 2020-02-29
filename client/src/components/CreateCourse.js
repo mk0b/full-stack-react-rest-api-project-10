@@ -80,6 +80,9 @@ class CreateCourse extends Component {
             materialsNeeded,
             errors
         } = this.state;
+        //grabbing currently authenticated user to populate the By line
+        const { context } = this.props;
+        const userName = `${context.authenticatedUser.firstName} ${context.authenticatedUser.lastName}`;
 
         //FIXME: half the form is supposed to be to the right. It's on the right but below the rest. Figure out what I funked up.
         return (
@@ -103,7 +106,7 @@ class CreateCourse extends Component {
                                             value={title}
                                             onChange={this.change}
                                             placeholder="Course title..." />
-                                    <p>By Joe Smith</p>
+                                    <p>By {userName} </p>
                                     </div>
                                     <div className="course--description">
                                         <textarea 
