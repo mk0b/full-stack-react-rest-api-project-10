@@ -32,8 +32,6 @@ class Courses extends Component {
         const courses = this.state.courses;
         //using map to create a new array that I can include below
         //to add all of the courses in the db
-        //FIXME: I am getting a unique key prop warning but it's not a list so I can't figure out where it wants me to put it.
-        //TODO: Add Fragment here? Can I send a key into a fragment?
         const coursesArray = courses.map(course => {
             return (
                 <div key={course.id.toString()} className="grid-33">
