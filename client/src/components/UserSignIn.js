@@ -1,7 +1,4 @@
 //stateful class component
-//TODO: If an unauthenticated user is redirected to the sign in page, the UserSignIn component redirects users back to 
-//the previous screen after successfully signing in.
-
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Form from './Form';
@@ -48,7 +45,6 @@ class UserSignIn extends Component {
                 //send to main page if auth goes through
                 console.log(`Success! ${emailAddress} is now signed in.`);
                 //sends the user back to the page they came from
-                //FIXME: This isn't routing back to where the user came from
                 this.props.history.push(from.pathname);
             }
         })

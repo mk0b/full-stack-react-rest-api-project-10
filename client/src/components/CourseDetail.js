@@ -1,13 +1,10 @@
 //stateful class component
 
 import React, { Component, Fragment } from 'react';
-import { withRouter } from 'react-router-dom';
 const ReactMarkdown = require('react-markdown');
 
 //TODO: add the associated user info with userInfo (at least for the By) data or get it from who is authorized?
-//TODO: redirects users to the /notfound path if the requested course isn't returned from the REST API.
 //TODO: Update Course and Delete Course buttons only show if there is an authenticated user.
-//TODO: The auth user id matches that of the user who owns the course.
 
 class CourseDetail extends Component {
     //setting up state
@@ -126,4 +123,4 @@ class CourseDetail extends Component {
     }
 }
 
-export default withRouter (CourseDetail);
+export default CourseDetail;

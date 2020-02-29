@@ -1,10 +1,4 @@
 //stateful class component
-
-//TODO: Redirects users to the /notfound path 
-//if the requested course isn't returned from the REST API.
-//Redirects users to the /forbidden path if 
-//the requested course isn't owned by the authenticated user.
-
 import React, { Component, Fragment } from 'react';
 import Form from './Form';
 
@@ -107,7 +101,7 @@ class UpdateCourse extends Component {
         })
         .catch(err => {
             console.log('Something went wrong: ', err);
-            //TODO: Add error redirects here
+            this.props.history.push('/error');
         });
     }
 
