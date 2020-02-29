@@ -28,11 +28,6 @@ const UpdateCourseWithContext = withContext(UpdateCourse);
 const CourseDetailWithContext = withContext(CourseDetail);
 const CoursesWithContext = withContext(Courses);
 
-//TODO: Components redirect users to the /error path when requests to 
-//the REST API return a "500 Internal Server Error" HTTP status code.
-
-//TODO: Put back PrivateRoute to create course and update course. Need to remove because it wont let me see this page even though I am signed in.
-
 function App() {
   return (
     <BrowserRouter>
@@ -42,8 +37,8 @@ function App() {
           <Route exact path="/" component={CoursesWithContext} />
           <Route path="/signup" component={UserSignUpWithContext} />
           <Route path="/signin" component={UserSignInWithContext} />
-          <Route path="/courses/create" component={CreateCourseWithContext} />
-          <Route path="/courses/:id/update" component={UpdateCourseWithContext} />
+          <PrivateRoute path="/courses/create" component={CreateCourseWithContext} />
+          <PrivateRoute path="/courses/:id/update" component={UpdateCourseWithContext} />
           <Route path="/courses/:id" component={CourseDetailWithContext} />
           <Route path="/error" component={UnhandledError} />
           <Route path="/forbidden" component={Forbidden} />
