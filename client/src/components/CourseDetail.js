@@ -62,7 +62,6 @@ class CourseDetail extends Component {
         }
     }
 
-    //FIXME: Switch the delete link to a button? Getting a warning in the log.
     render() {
         console.log(this.state.courseDetail);
         const { id, title, description, estimatedTime, materialsNeeded, userInfo} = this.state.courseDetail;
@@ -80,9 +79,9 @@ class CourseDetail extends Component {
                             <a className="button" href={`/courses/${id}/update`}>
                             Update Course
                             </a>
-                            <a onClick={this.onDelete} className="button">
+                            <button onClick={this.onDelete} className="button">
                             Delete Course
-                            </a>
+                            </button>
                         </span>
                         <a className="button button-secondary" href="/">
                             Return to List
