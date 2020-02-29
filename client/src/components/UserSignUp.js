@@ -51,8 +51,6 @@ class UserSignUp extends Component {
             password
         };
 
-        console.log('Confirm password: ', confirmPassword);
-        console.log('Password: ', password);
         //if passwords match submit the form
         if (confirmPassword === password) {
             //create new user async returns a promise

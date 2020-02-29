@@ -25,13 +25,11 @@ class UserSignIn extends Component {
         });
     }
 
+    //on submit redirect to / or page came from
     submit = () => {
         const { context } = this.props;
         //getting the page user came from
         const { from } = this.props.location.state || { from: { pathname: '/' } };
-        console.log('From: ', from);
-        console.log('From Pathname', from.pathname);
-        console.log('From Pathname', typeof from.pathname);
         const { emailAddress, password } = this.state;
 
         context.actions.signIn(emailAddress, password)

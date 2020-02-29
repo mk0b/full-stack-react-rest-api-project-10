@@ -1,5 +1,4 @@
 //stateless functional component
-//exceeds
 import React, { Fragment } from 'react';
 
 const UnhandledError = () => (

@@ -27,8 +27,6 @@ class Courses extends Component {
     }
 
     render() {
-        //TODO: Remove test
-        console.log('Courses', this.state.courses);
         const courses = this.state.courses;
         //using map to create a new array that I can include below
         //to add all of the courses in the db

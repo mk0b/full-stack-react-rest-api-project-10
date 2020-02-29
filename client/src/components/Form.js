@@ -1,10 +1,6 @@
-//exports a function that renders validation errors
-//also handles submit and cancel buttons for forms
-//try to rename it but form makes the most sense.
 import React from 'react';
 
-//TODO: Check after and make sure css lines up.
-
+//form helper. handles error validations and form buttons
 export default (props) => {
     const {
         cancel,
@@ -40,8 +36,6 @@ export default (props) => {
 
 function ErrorsDisplay({ errors }) {
   let errorsDisplay = null;
-  console.log('Errors:', errors);
-  console.log('Errors:', typeof errors);
   if (errors.length && typeof errors !== 'string') {
     errorsDisplay = (
       <div>

@@ -22,11 +22,10 @@ class UpdateCourse extends Component {
         const { context } = this.props;
         const courseId = this.props.match.params.id;
         const authUserId = context.authenticatedUser.id;
-        console.log('Auth user id: ', authUserId);
+
         context.data.getCourse(courseId)
         .then(course => {
             const courseOwnerId = course.userId
-            console.log('Course owner id: ', courseOwnerId);
             if (course) {
                 if (courseOwnerId === authUserId) {
                     console.log('Response: ', course);
@@ -62,6 +61,7 @@ class UpdateCourse extends Component {
         });
     }
 
+    //updating course on submit
     submit = () => {
         const { context } = this.props;
         const {
@@ -82,11 +82,10 @@ class UpdateCourse extends Component {
             materialsNeeded,
             userId
         }
-        console.log('updateCourse: ', updateCourse);
 
+        //grabbing needed creds
         const emailAddress = context.authenticatedUser.emailAddress;
         const password = context.authenticatedUser.password;
-        console.log('Creds: ', emailAddress, password);
 
         //calling updateCourse
         context.data.updateCourse(updateCourse, emailAddress, password)

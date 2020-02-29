@@ -1,10 +1,6 @@
 //stateful class component
-
 import React, { Component, Fragment } from 'react';
 const ReactMarkdown = require('react-markdown');
-
-//TODO: add the associated user info with userInfo (at least for the By) data or get it from who is authorized?
-//TODO: Update Course and Delete Course buttons only show if there is an authenticated user.
 
 class CourseDetail extends Component {
     //setting up state
@@ -15,6 +11,7 @@ class CourseDetail extends Component {
         }
     }
 
+    //when the component mounts grab the course details
     componentDidMount() {
         const { context } = this.props;
         const { id } = this.props.match.params;
@@ -36,6 +33,7 @@ class CourseDetail extends Component {
 
     }
 
+    //when the delete button is clicked pop up confirms. If confirmed the course is removed from the db
     onDelete = event => {
         //use the id and insert into the api call for the delete function.
         console.log('Clicked: ', event.target);
@@ -63,15 +61,12 @@ class CourseDetail extends Component {
     }
 
     render() {
-        console.log(this.state.courseDetail);
         const { context } = this.props;
         const authUser = context.authenticatedUser;
-        console.log(authUser);
         const { id, title, description, estimatedTime, materialsNeeded, userInfo} = this.state.courseDetail;
-        console.log(userInfo);
         //was able to figure out how to access the nested object because of this article: https://hackernoon.com/accessing-nested-objects-in-javascript-f02f1bd6387f
         const userName = userInfo ? `${userInfo.firstName} ${userInfo.lastName}` : null;
-        console.log(userName);
+
         return (
             <Fragment>
                 <div>

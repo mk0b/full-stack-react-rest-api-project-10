@@ -27,6 +27,7 @@ class CreateCourse extends Component {
         });
     }
 
+    //on submit create new course
     submit = () => {
         const { context } = this.props;
         const {
@@ -45,9 +46,9 @@ class CreateCourse extends Component {
             userId: context.authenticatedUser.id
         }
 
+        //grabbing needed creds
         const emailAddress = context.authenticatedUser.emailAddress;
         const password = context.authenticatedUser.password;
-        console.log('Creds: ', emailAddress, password);
 
         //create the new course using context.createCourse
         context.data.createCourse(newCourse, emailAddress, password)
