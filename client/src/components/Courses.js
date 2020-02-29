@@ -36,7 +36,7 @@ class Courses extends Component {
         //TODO: Add Fragment here? Can I send a key into a fragment?
         const coursesArray = courses.map(course => {
             return (
-                <div className="grid-33">
+                <div key={course.id.toString()} className="grid-33">
                 <a className="course--module course--link" href={`/courses/${course.id}`}>
                     <h4 className="course--label">Course</h4>
                     <h3 className="course--title">{course.title}</h3>
