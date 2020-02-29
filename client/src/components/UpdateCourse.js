@@ -53,7 +53,7 @@ class UpdateCourse extends Component {
         })
         .catch(err => {
             console.log('Something went wrong: ', err);
-            this.props.history.push('/error');
+            this.props.history.push('/error'); 
         });
     }
 
@@ -102,7 +102,7 @@ class UpdateCourse extends Component {
             } else {
                 console.log(`Course #${updateCourse.id} has been succesfully updated!`);
                 //after course updated send back to course detail
-                //this.props.history.push(`/courses/${updateCourse.id}`);
+                this.props.history.push(`/courses/${updateCourse.id}`);
             }
         })
         .catch(err => {
