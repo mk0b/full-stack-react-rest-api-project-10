@@ -84,12 +84,10 @@ class CreateCourse extends Component {
         const { context } = this.props;
         const userName = `${context.authenticatedUser.firstName} ${context.authenticatedUser.lastName}`;
 
-        //FIXME: half the form is supposed to be to the right. It's on the right but below the rest. Figure out what I funked up.
         return (
             <Fragment>
                 <div className="bounds course--detail">
                     <h1>Create Course</h1>
-                    <div className="grid-66">
                         <Form 
                             cancel={this.cancel}
                             errors={errors}
@@ -97,6 +95,7 @@ class CreateCourse extends Component {
                             submitButtonText="Create Course"
                             elements={() => (
                                 <Fragment>
+                                <div className="grid-66">
                                     <div className="course--header">
                                         <h4 className="course--label">Course</h4>
                                         <input 
@@ -117,6 +116,7 @@ class CreateCourse extends Component {
                                             onChange={this.change}
                                             placeholder="Course description..." />
                                     </div>
+                                </div>
                                     <div className="grid-25 grid-right">
                                         <div className="course--stats">
                                             <ul className="course--stats--list">
@@ -150,7 +150,6 @@ class CreateCourse extends Component {
                                     </div>   
                             </Fragment> )} />
                 </div>
-            </div>
         </Fragment>            
         );
     }

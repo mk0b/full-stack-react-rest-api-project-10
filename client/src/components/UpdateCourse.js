@@ -119,12 +119,10 @@ class UpdateCourse extends Component {
             errors
         } = this.state;
         
-        //FIXME: half the form is supposed to be to the right. It's on the right but below the rest. Figure out what I funked up.
         return (
             <Fragment>
                 <div className="bounds course--detail">
                     <h1>Update Course</h1>
-                    <div className="grid-66">
                         <Form 
                             cancel={this.cancel}
                             errors={errors}
@@ -132,25 +130,27 @@ class UpdateCourse extends Component {
                             submitButtonText="Update Course"
                             elements={() => (
                                 <Fragment>
-                                    <div className="course--header">
-                                        <h4 className="course--label">Course</h4>
-                                        <input 
-                                            id="title"
-                                            name="title"
-                                            type="text"
-                                            value={title}
-                                            onChange={this.change}
-                                            placeholder="Course title..." />
-                                    <p>By Joe Smith</p>
-                                    </div>
-                                    <div className="course--description">
-                                        <textarea 
-                                            id="description"
-                                            name="description"
-                                            className="desc"
-                                            value={description}
-                                            onChange={this.change}
-                                            placeholder="Course description..." />
+                                    <div className="grid-66">
+                                        <div className="course--header">
+                                            <h4 className="course--label">Course</h4>
+                                            <input 
+                                                id="title"
+                                                name="title"
+                                                type="text"
+                                                value={title}
+                                                onChange={this.change}
+                                                placeholder="Course title..." />
+                                        <p>By Joe Smith</p>
+                                        </div>
+                                        <div className="course--description">
+                                            <textarea 
+                                                id="description"
+                                                name="description"
+                                                className="desc"
+                                                value={description}
+                                                onChange={this.change}
+                                                placeholder="Course description..." />
+                                        </div>
                                     </div>
                                     <div className="grid-25 grid-right">
                                         <div className="course--stats">
@@ -185,7 +185,6 @@ class UpdateCourse extends Component {
                                     </div>   
                             </Fragment> )} />
                 </div>
-            </div>
         </Fragment>
         );
     }
