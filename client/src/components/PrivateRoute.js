@@ -13,18 +13,23 @@ export default ({ component: Component, ...rest }) => {
             {context => (
                 <Route 
                     {...rest}
-                    render={props => context.autheticatedUser ? (
-                        <Component {...props} />
-                    ) : (
-                        <Redirect to={{
-                            pathname: '/signin',
-                            state: { from: props.location }
-                            }} />
-                        )
-                    }
+                    render={props => {
+                        const { authenticatedUser } = context;
+                        if (authenticatedUser) {
+                            return (
+                                <Component {...props} />
+                            );
+                        } else {
+                            return (
+                                <Redirect to={{
+                                pathname: '/signin',
+                                state: { from: props.location }
+                                }} />
+                            );
+                        }
+                    }}
                 />
             )}
         </Consumer>
     );
 };
-

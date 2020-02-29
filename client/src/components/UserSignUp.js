@@ -62,11 +62,7 @@ class UserSignUp extends Component {
             } else {
                 console.log(`${emailAddress} is succesfully signed up and authenticated!`);
                 //after signup sign them in
-                context.actions.signIn(emailAddress, password)
-                .then(() => {
-                    //after signup sending to /
-                    this.props.history.push('/');
-                })
+                context.actions.signIn(emailAddress, password);
             }
         })
         .catch(err => {
