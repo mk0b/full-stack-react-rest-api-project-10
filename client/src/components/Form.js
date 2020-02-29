@@ -53,7 +53,7 @@ function ErrorsDisplay({ errors }) {
         </div>
       </div>
     );
-  } else {
+  } else if (errors.length && typeof errors === 'string') {
     errorsDisplay = (
       <div>
         <h2 className="validation--errors--label">Validation errors</h2>
