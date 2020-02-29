@@ -44,6 +44,7 @@ function App() {
           <Route path="/forbidden" component={Forbidden} />
           <Route path="/signout" component={UserSignOutWithContext} />
           <Route path="/notfound" component={NotFound} />
+          <Route component={NotFound} />
         </Switch>
       </div>
     </BrowserRouter>
