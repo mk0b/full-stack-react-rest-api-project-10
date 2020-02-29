@@ -91,7 +91,7 @@ class CourseDetail extends Component {
                                 <a className="button button-secondary" href="/">
                                     Return to List
                                 </a>
-                            </div>
+                                </div>
                             </div>
                             </Fragment>
                         ) : (
@@ -114,9 +114,9 @@ class CourseDetail extends Component {
                         <p>By {userName} </p>
                         </div>
                         <div className="course--description">
-                        <p>
+                        <div>
                             <ReactMarkdown source={description} />
-                        </p>
+                        </div>
                         </div>
                     </div>
                     <div className="grid-25 grid-right">
