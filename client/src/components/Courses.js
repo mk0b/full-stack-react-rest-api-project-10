@@ -26,23 +26,6 @@ class Courses extends Component {
         });
     }
 
-    //added this becuase when I was deleting a course and pushing / to history
-    //this component wasn't re-rending and it looked like it didn't delete.
-    componentDidUpdate() {
-        //making the call via context and data to get all course data
-        const { context } = this.props;
-        context.data.getCourses()
-        .then(courseData => {
-            this.setState({
-                courses: courseData
-            });
-        })
-        .catch(err => {
-            console.log('Something went wrong: ', err);
-            this.props.history.push('/error');
-        });
-    }
-
     render() {
         const courses = this.state.courses;
         //using map to create a new array that I can include below

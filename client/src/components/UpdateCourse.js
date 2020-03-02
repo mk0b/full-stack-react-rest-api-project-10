@@ -105,8 +105,8 @@ class UpdateCourse extends Component {
     }
 
     cancel = () => {
-        //redirecting back to the main public page /
-        this.props.history.push('/');
+        //redirecting back to the course detail page
+        this.props.history.push(`/courses/${this.state.id}`);
     }
 
     render() {

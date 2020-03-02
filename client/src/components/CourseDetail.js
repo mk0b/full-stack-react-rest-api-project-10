@@ -48,15 +48,16 @@ class CourseDetail extends Component {
 
             //make the call using the method in data via context
             context.data.deleteCourse(id, emailAddress, password)
+            .then(() => {
+                //redirect back to home page
+                this.props.history.push('/');
+            })
             .catch(err => {
                 console.log('Something went wrong: ', err);
                 this.props.history.push('/error');
             });
-            //redirect back to home page
-            this.props.history.push('/');
         } else {
             console.log('Delete Canceled');
-            
         }
     }
 
