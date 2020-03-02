@@ -28,7 +28,6 @@ class UpdateCourse extends Component {
             const courseOwnerId = course.userId
             if (course) {
                 if (courseOwnerId === authUserId) {
-                    console.log('Response: ', course);
                     this.setState({
                         id: course.id,
                         title: course.title,

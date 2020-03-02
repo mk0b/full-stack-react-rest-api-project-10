@@ -36,7 +36,6 @@ class CourseDetail extends Component {
     //when the delete button is clicked pop up confirms. If confirmed the course is removed from the db
     onDelete = event => {
         //use the id and insert into the api call for the delete function.
-        console.log('Clicked: ', event.target);
         if (window.confirm('Are you sure you want to delete this course? This action cannot be undone.')) {
             console.log('Delete Confirmed')
             //grabbing the id of the course from the url
@@ -64,7 +63,6 @@ class CourseDetail extends Component {
     render() {
         const { context } = this.props;
         const authUser = context.authenticatedUser;
-        const authUserId = context.authenticatedUser.id;
         const { id, title, description, estimatedTime, materialsNeeded, userId, userInfo} = this.state.courseDetail;
         //was able to figure out how to access the nested object because of this article: https://hackernoon.com/accessing-nested-objects-in-javascript-f02f1bd6387f
         const userName = userInfo ? `${userInfo.firstName} ${userInfo.lastName}` : null;
@@ -73,35 +71,58 @@ class CourseDetail extends Component {
             <Fragment>
                 <div>
                     <div className="actions--bar">
-                    {authUser && authUserId === userId ? (
-                            <Fragment>
-                            <div className="bounds">
-                                <div className="grid-100">
-                                <span>
-                                    <Link className="button" to={`/courses/${id}/update`}>
-                                    Update Course
-                                    </Link>
-                                    <button onClick={this.onDelete} className="button">
-                                    Delete Course
-                                    </button>
-                                </span>
-                                <Link className="button button-secondary" to="/">
-                                    Return to List
-                                </Link>
-                                </div>
-                            </div>
-                            </Fragment>
-                        ) : (
-                            <Fragment>
-                            <div className="bounds">
-                                <div className="grid-100">
-                                <Link className="button button-secondary" to="/">
-                                    Return to List
-                                </Link>
-                                </div>
-                            </div>
-                            </Fragment>
-                        )}
+                    {
+                        (() => {
+                            if (authUser) {
+                                const authUserId = context.authenticatedUser.id;
+                                if (authUserId === userId) {
+                                    return (
+                                        <Fragment>
+                                            <div className="bounds">
+                                                <div className="grid-100">
+                                                <span>
+                                                    <Link className="button" to={`/courses/${id}/update`}>
+                                                    Update Course
+                                                    </Link>
+                                                    <button onClick={this.onDelete} className="button">
+                                                    Delete Course
+                                                    </button>
+                                                </span>
+                                                <Link className="button button-secondary" to="/">
+                                                    Return to List
+                                                </Link>
+                                                </div>
+                                            </div>
+                                        </Fragment>
+                                    );
+                                } else {
+                                    return (
+                                        <Fragment>
+                                            <div className="bounds">
+                                                <div className="grid-100">
+                                                <Link className="button button-secondary" to="/">
+                                                    Return to List
+                                                </Link>
+                                                </div>
+                                            </div>
+                                        </Fragment>
+                                    );
+                                }
+                            } else {
+                                return (
+                                        <Fragment>
+                                            <div className="bounds">
+                                                <div className="grid-100">
+                                                <Link className="button button-secondary" to="/">
+                                                    Return to List
+                                                </Link>
+                                                </div>
+                                            </div>
+                                        </Fragment>
+                                    );
+                            }
+                        })()
+                    }
                     </div>
                     <div className="bounds course--detail">
                     <div className="grid-66">
