@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 class Header extends React.PureComponent {
 
+    
     render () {
         const { context } = this.props;
         const authUser = context.authenticatedUser;

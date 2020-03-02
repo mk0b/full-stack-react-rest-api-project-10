@@ -34,7 +34,7 @@ class Courses extends Component {
         const coursesArray = courses.map(course => {
             return (
                 <div key={course.id.toString()} className="grid-33">
-                <Link className="course--module course--link" href={`/courses/${course.id}`}>
+                <Link className="course--module course--link" to={`/courses/${course.id}`}>
                     <h4 className="course--label">Course</h4>
                     <h3 className="course--title">{course.title}</h3>
                 </Link>
@@ -49,7 +49,7 @@ class Courses extends Component {
                     <div className="grid-33">
                     <Link
                         className="course--module course--add--module"
-                        href="/courses/create"
+                        to="/courses/create"
                     >
                         <h3 className="course--add--title">
                         <svg

@@ -19,7 +19,6 @@ class CourseDetail extends Component {
         context.data.getCourse(id)
         .then(course => {
             if (course) {
-                console.log('Course data response: ', course);
                 this.setState({
                     courseDetail: course
                 });
@@ -79,14 +78,14 @@ class CourseDetail extends Component {
                             <div className="bounds">
                                 <div className="grid-100">
                                 <span>
-                                    <Link className="button" href={`/courses/${id}/update`}>
+                                    <Link className="button" to={`/courses/${id}/update`}>
                                     Update Course
                                     </Link>
                                     <button onClick={this.onDelete} className="button">
                                     Delete Course
                                     </button>
                                 </span>
-                                <Link className="button button-secondary" href="/">
+                                <Link className="button button-secondary" to="/">
                                     Return to List
                                 </Link>
                                 </div>
@@ -96,7 +95,7 @@ class CourseDetail extends Component {
                             <Fragment>
                             <div className="bounds">
                                 <div className="grid-100">
-                                <Link className="button button-secondary" href="/">
+                                <Link className="button button-secondary" to="/">
                                     Return to List
                                 </Link>
                                 </div>
