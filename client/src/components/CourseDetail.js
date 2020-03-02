@@ -1,5 +1,6 @@
 //stateful class component
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 const ReactMarkdown = require('react-markdown');
 
 class CourseDetail extends Component {
@@ -78,16 +79,16 @@ class CourseDetail extends Component {
                             <div className="bounds">
                                 <div className="grid-100">
                                 <span>
-                                    <a className="button" href={`/courses/${id}/update`}>
+                                    <Link className="button" href={`/courses/${id}/update`}>
                                     Update Course
-                                    </a>
+                                    </Link>
                                     <button onClick={this.onDelete} className="button">
                                     Delete Course
                                     </button>
                                 </span>
-                                <a className="button button-secondary" href="/">
+                                <Link className="button button-secondary" href="/">
                                     Return to List
-                                </a>
+                                </Link>
                                 </div>
                             </div>
                             </Fragment>
@@ -95,9 +96,9 @@ class CourseDetail extends Component {
                             <Fragment>
                             <div className="bounds">
                                 <div className="grid-100">
-                                <a className="button button-secondary" href="/">
+                                <Link className="button button-secondary" href="/">
                                     Return to List
-                                </a>
+                                </Link>
                                 </div>
                             </div>
                             </Fragment>

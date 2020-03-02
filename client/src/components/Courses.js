@@ -1,5 +1,6 @@
 //stateful class component
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 class Courses extends Component {
     //setting up state
@@ -33,10 +34,10 @@ class Courses extends Component {
         const coursesArray = courses.map(course => {
             return (
                 <div key={course.id.toString()} className="grid-33">
-                <a className="course--module course--link" href={`/courses/${course.id}`}>
+                <Link className="course--module course--link" href={`/courses/${course.id}`}>
                     <h4 className="course--label">Course</h4>
                     <h3 className="course--title">{course.title}</h3>
-                </a>
+                </Link>
                 </div>
             );
         });
@@ -46,7 +47,7 @@ class Courses extends Component {
                 <div className="bounds">
                     {coursesArray}
                     <div className="grid-33">
-                    <a
+                    <Link
                         className="course--module course--add--module"
                         href="/courses/create"
                     >
@@ -63,7 +64,7 @@ class Courses extends Component {
                         </svg>
                         New Course
                         </h3>
-                    </a>
+                    </Link>
                     </div>
                 </div>
             </Fragment>

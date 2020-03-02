@@ -56,7 +56,6 @@ class UserSignUp extends Component {
             //create new user async returns a promise
             context.data.createUser(user)
             .then(errors => {
-                console.log('Errors', errors);
                 if (errors.length) {
                     this.setState({ errors });
                 } else {
