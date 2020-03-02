@@ -64,7 +64,8 @@ class CourseDetail extends Component {
     render() {
         const { context } = this.props;
         const authUser = context.authenticatedUser;
-        const { id, title, description, estimatedTime, materialsNeeded, userInfo} = this.state.courseDetail;
+        const authUserId = context.authenticatedUser.id;
+        const { id, title, description, estimatedTime, materialsNeeded, userId, userInfo} = this.state.courseDetail;
         //was able to figure out how to access the nested object because of this article: https://hackernoon.com/accessing-nested-objects-in-javascript-f02f1bd6387f
         const userName = userInfo ? `${userInfo.firstName} ${userInfo.lastName}` : null;
 
@@ -72,7 +73,7 @@ class CourseDetail extends Component {
             <Fragment>
                 <div>
                     <div className="actions--bar">
-                    {authUser ? (
+                    {authUser && authUserId === userId ? (
                             <Fragment>
                             <div className="bounds">
                                 <div className="grid-100">
