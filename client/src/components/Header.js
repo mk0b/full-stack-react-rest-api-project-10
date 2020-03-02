@@ -1,4 +1,3 @@
-//chose to make this a pure component modeling after the React Auth course
 import React, { Fragment } from 'react';
 import { NavLink } from 'react-router-dom';
 
