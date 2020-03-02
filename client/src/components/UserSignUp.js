@@ -56,16 +56,15 @@ class UserSignUp extends Component {
             //create new user async returns a promise
             context.data.createUser(user)
             .then(errors => {
+                console.log('Errors', errors);
                 if (errors.length) {
                     this.setState({ errors });
                 } else {
                     console.log(`${emailAddress} is succesfully signed up and authenticated!`);
                     //after signup sign them in
                     context.actions.signIn(emailAddress, password);
+                    this.props.history.push('/');
                 }
-            })
-            .then(() => {
-                this.props.history.push('/');
             })
             .catch(err => {
                 //handle rejected promises
