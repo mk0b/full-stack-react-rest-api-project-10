@@ -13,7 +13,7 @@ Create and manage course data with this full stack application.
 - Sequelize
 - SQLite3
 
-### How to use this app
+### How to use this app:
 
 1. Navigate to the api folder.
 2. Run npm install.
